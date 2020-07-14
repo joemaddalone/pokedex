@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil';
 const FavoriteTrigger = () => {
   const toggle = useToggleSidebar();
   const favs = useRecoilValue(favorites);
-  return <button onClick={() => toggle()}>Favorites: {favs.length}</button>;
+  return <button onClick={() => toggle()}>Favourites: {favs.length}</button>;
 };
 
 export default FavoriteTrigger;

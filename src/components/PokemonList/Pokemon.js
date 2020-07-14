@@ -12,8 +12,8 @@ const Pokemon = ({ isFavorited, id, name, triggerAdd }) => {
           position="top center"
           content={
             isFavorited
-              ? `${name} is in your favorites!`
-              : `Add ${name} to your favorites!`
+              ? `${name} is in your favourites!`
+              : `Add ${name} to your favourites!`
           }
           trigger={
             <Icon

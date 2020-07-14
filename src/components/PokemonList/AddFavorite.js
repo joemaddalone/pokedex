@@ -19,7 +19,9 @@ const AddFavorite = ({ cancel, pokemon }) => {
 
   return (
     <Modal size="tiny" open closeOnEscape={false} closeOnDimmerClick={false}>
-      <Modal.Header>Add {pokemon.name}</Modal.Header>
+      <Modal.Header>
+        Add <span className="ttc">{pokemon.name}</span> to your favourites
+      </Modal.Header>
       <Modal.Content>
         <Form>
           <Form.Input onChange={onChangeMemo} label="Add a memo if you wish" />
@@ -30,7 +32,7 @@ const AddFavorite = ({ cancel, pokemon }) => {
           Cancel
         </Button>
         <Button onClick={onSave} primary>
-          Save
+          Add to favourites
         </Button>
       </Modal.Actions>
     </Modal>

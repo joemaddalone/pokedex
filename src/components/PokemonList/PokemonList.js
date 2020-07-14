@@ -24,24 +24,27 @@ const PokemonList = () => {
     );
   }
   return (
-    <div className="pokemon-list">
-      {things.map(({ pokemon: { url, name } }) => {
-        const id = url.split('/').reverse()[1];
-        const isFavorited = favs.some((f) => f.id === id);
-        return (
-          <Pokemon
-            id={id}
-            isFavorited={isFavorited}
-            key={id}
-            name={name}
-            triggerAdd={() => setAdding({ id, name })}
-          />
-        );
-      })}
-      {adding && (
-        <AddFavorite pokemon={adding} cancel={() => setAdding(null)} />
-      )}
-    </div>
+    <>
+      <h3 className="ml3 pt3 ttc">{params.name}</h3>
+      <div className="pokemon-list">
+        {things.map(({ pokemon: { url, name } }) => {
+          const id = url.split('/').reverse()[1];
+          const isFavorited = favs.some((f) => f.id === id);
+          return (
+            <Pokemon
+              id={id}
+              isFavorited={isFavorited}
+              key={id}
+              name={name}
+              triggerAdd={() => setAdding({ id, name })}
+            />
+          );
+        })}
+        {adding && (
+          <AddFavorite pokemon={adding} cancel={() => setAdding(null)} />
+        )}
+      </div>
+    </>
   );
 };
 

@@ -20,7 +20,12 @@ const FavoriteList = () => {
           <h1>No items</h1>
         </EmptyState>
       ) : (
-        favs.map((f) => <Favorite remove={remove} key={f.id} favorite={f} />)
+        <>
+          <h2 className="tc pt3">My Favourites</h2>
+          {favs.map((f) => (
+            <Favorite remove={remove} key={f.id} favorite={f} />
+          ))}
+        </>
       )}
     </div>
   );
