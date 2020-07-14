@@ -16,18 +16,18 @@ const Pokemon = ({ isFavorited, id, name, triggerAdd }) => {
           }
           trigger={
             <Icon
-              onClick={() => !isFavorited && triggerAdd()}
-              name="favorite"
-              color={isFavorited ? 'blue' : 'black'}
               className="add-fav-icon pointer"
+              color={isFavorited ? 'blue' : 'black'}
+              name="favorite"
+              onClick={() => !isFavorited && triggerAdd()}
             />
           }
         />
       </div>
       <div className="name">{name}</div>
       <img
-        height="100"
         alt=""
+        height="100"
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
       />
       <div className="id">#{id}</div>

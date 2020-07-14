@@ -1,13 +1,10 @@
 import React from 'react';
+import EmptyState from './common/EmptyState';
 
 const Home = () => (
-  <div>
-    {Array.from({ length: 1000 }).map((_, index) => (
-      <div key={index} className="item">
-        {index}
-      </div>
-    ))}
-  </div>
+  <EmptyState>
+    <h2>Yo dawg, select a type.</h2>
+  </EmptyState>
 );
 
 export default Home;

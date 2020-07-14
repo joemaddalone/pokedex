@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import { favorites } from './atoms';
+import { favorites, sidebarOpen } from './atoms';
 
 const cloneIndex = (items, id) => ({
   clone: items.map((item) => ({ ...item })),
@@ -16,7 +16,6 @@ export const useAddFavorite = () => {
     const { clone, index } = cloneIndex(favs, favorite.id);
     if (index !== -1) {
       // The favorite is already in the list.
-      // Let's consider a notification to the user that this is the case.
       return;
     } else {
       const updatedFavorites = [...clone, { ...favorite }];
@@ -32,5 +31,12 @@ export const useRemoveFavorite = () => {
     const updatedFavorites = favs.filter((fav) => fav.id !== favorite.id);
     setFavs(updatedFavorites);
     cacheFavorites(updatedFavorites);
+  };
+};
+
+export const useToggleSidebar = () => {
+  const [state, setState] = useRecoilState(sidebarOpen);
+  return (change = !state) => {
+    setState(change);
   };
 };

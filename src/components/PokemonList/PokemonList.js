@@ -30,11 +30,11 @@ const PokemonList = () => {
         const isFavorited = favs.some((f) => f.id === id);
         return (
           <Pokemon
-            triggerAdd={() => setAdding({ id, name })}
-            key={id}
-            name={name}
             id={id}
             isFavorited={isFavorited}
+            key={id}
+            name={name}
+            triggerAdd={() => setAdding({ id, name })}
           />
         );
       })}

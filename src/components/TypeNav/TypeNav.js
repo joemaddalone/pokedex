@@ -26,11 +26,11 @@ const TypeNav = () => {
     <div className="type-nav">
       <div className="search-types">
         <Input
-          value={search || ''}
-          onChange={onSearchFilter}
-          size="small"
           icon={inputIcon}
+          onChange={onSearchFilter}
           placeholder="...search"
+          size="small"
+          value={search || ''}
         />
       </div>
       <div className="left-nav-items">

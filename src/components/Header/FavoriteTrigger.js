@@ -1,10 +1,11 @@
 import React from 'react';
-import { favorites } from 'poke-store';
+import { favorites, useToggleSidebar } from 'poke-store';
 import { useRecoilValue } from 'recoil';
 
 const FavoriteTrigger = () => {
+  const toggle = useToggleSidebar();
   const favs = useRecoilValue(favorites);
-  return <div>Favorites: {favs.length}</div>;
+  return <button onClick={() => toggle()}>Favorites: {favs.length}</button>;
 };
 
 export default FavoriteTrigger;

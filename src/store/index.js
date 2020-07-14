@@ -1,3 +1,3 @@
-export { favorites } from './atoms';
+export { favorites, sidebarOpen } from './atoms';
 export { pokemonTypes, pokemonType } from './selectors';
-export { useAddFavorite, useRemoveFavorite } from './hooks';
+export { useAddFavorite, useRemoveFavorite, useToggleSidebar } from './hooks';

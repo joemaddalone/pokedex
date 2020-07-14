@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ComponentLoader from './common/ComponentLoader';
 import PokemonList from './PokemonList/PokemonList';
 import Home from './Home';
 import TypeNav from './TypeNav/TypeNav';
 import Header from './Header/Header';
+import FavoritesList from './FavoritesList/FavoriteList';
 import { RecoilRoot } from 'recoil';
+import { Loader } from 'semantic-ui-react';
 import './App.css';
 import '../css/export.css';
 
@@ -23,13 +24,14 @@ const App = () => {
           <div className="details box">
             <Switch>
               <React.Suspense
-                fallback={<ComponentLoader label="Loading Pokemon..." />}>
+                fallback={<Loader active>Loading Pokemon...</Loader>}>
                 <Route exact path="/" component={Home} />
                 <Route exact path="/type/:name" component={PokemonList} />
               </React.Suspense>
             </Switch>
           </div>
         </main>
+        <FavoritesList />
       </Router>
     </RecoilRoot>
   );
