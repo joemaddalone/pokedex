@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Popup } from 'semantic-ui-react';
 import './PokemonList.css';
+import altImage from './Pokemon-Pokeball.png';
 
 const Pokemon = ({ isFavorited, id, name, triggerAdd }) => {
   return (
@@ -26,9 +27,12 @@ const Pokemon = ({ isFavorited, id, name, triggerAdd }) => {
       </div>
       <div className="name">{name}</div>
       <img
-        alt=""
+        alt={name}
         height="100"
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+        onError={(e) => {
+          e.target.src = altImage;
+        }}
       />
       <div className="id">#{id}</div>
     </div>

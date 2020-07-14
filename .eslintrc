@@ -47,7 +47,7 @@
     "jsx-a11y/click-events-have-key-events": 1,
     "jsx-a11y/no-autofocus": 0,
     "jsx-a11y/anchor-is-valid": 1,
-    "jsx-a11y/no-noninteractive-element-interactions": 1,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
     "jsx-a11y/no-noninteractive-tabindex": 1,
     "jsx-a11y/tabindex-no-positive": 1,
     "jsx-a11y/interactive-supports-focus": 1,
