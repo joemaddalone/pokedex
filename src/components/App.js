@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ComponentLoader from './common/ComponentLoader';
 import PokemonList from './PokemonList/PokemonList';
 import Home from './Home';
-import LeftNav from './LeftNav/LeftNav';
+import TypeNav from './TypeNav/TypeNav';
+import Header from './Header/Header';
 import { RecoilRoot } from 'recoil';
 import './App.css';
 import '../css/export.css';
@@ -12,11 +13,11 @@ const App = () => {
   return (
     <RecoilRoot>
       <Router basename="/">
-        <header className="app-header">pokedex</header>
+        <Header />
         <main className="app-main">
           <nav className="items">
             <React.Suspense fallback={<div>Loading...</div>}>
-              <LeftNav />
+              <TypeNav />
             </React.Suspense>
           </nav>
           <div className="details box">
