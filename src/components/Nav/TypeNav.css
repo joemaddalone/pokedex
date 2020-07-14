@@ -1,0 +1,28 @@
+.type-nav {
+  & .type-link {
+    display: block;
+    padding: 8px 10px;
+    text-align: left;
+    color: #fff;
+
+    &:hover {
+      background-color: #444;
+      color: #fff;
+    }
+
+    &.active {
+      background-color: #404060;
+    }
+  }
+
+  & .search-types {
+    position: sticky;
+    top: 0;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #333;
+    background-color: #222;
+  }
+}

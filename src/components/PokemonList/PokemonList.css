@@ -1,0 +1,28 @@
+.pokemon-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  & .pokemon {
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      box-shadow: 0 0 8px #ddd;
+    }
+
+    & .add-fav {
+      & .add-fav-icon:hover {
+        color: red;
+      }
+    }
+  }
+}
