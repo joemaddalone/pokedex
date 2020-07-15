@@ -11,21 +11,12 @@ module.exports = () => {
     devtool: 'source-map',
     mode: 'production',
     output: {
-      // The build folder.
       path: path.resolve(__dirname, '../build'),
-      // Add /* filename */ comments to generated require()s in the output.
       pathinfo: false,
-      // There will be one main bundle, and one file per asynchronous chunk.
-      // In development, it does not produce real files.
       filename: 'js/[name].[contenthash:8].js',
-      // TODO: remove this when upgrading to webpack 5
       futureEmitAssets: true,
-      // There are also additional JS chunk files if you use code splitting.
       chunkFilename: 'js/[name].[contenthash:8].chunk.js',
-      // We inferred the "public path" (such as / or /my-project) from homepage.
-      // We use "/" in development.
       publicPath: '/',
-      // Point sourcemap entries to original disk location (format as URL on Windows)
     },
     optimization: {
       splitChunks: {
