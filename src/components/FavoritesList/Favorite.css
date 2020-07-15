@@ -1,14 +1,10 @@
 .favorite-item {
   min-height: 80px;
   margin: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--moon-gray);
   padding: 10px;
   position: relative;
 
-  & .favorite-name {
-  }
-  & .favorite-id {
-  }
   & .favorite-remove {
     position: absolute;
     top: 10px;

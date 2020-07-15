@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Popup, Button } from 'semantic-ui-react';
+import { translate } from 'poke-i18n';
 import './Favorite.css';
+
+const t = translate(['favorite']);
 
 const Favorite = ({ favorite, remove }) => {
   return (
@@ -20,9 +23,9 @@ const Favorite = ({ favorite, remove }) => {
           />
         }>
         <Popup.Content>
-          <h5>Are you sure you want to remove {favorite.name} from your favorites?</h5>
+          <h5>{t('remove', { favorite })}</h5>
           <Button size="tiny" negative onClick={() => remove(favorite)}>
-            Remove Favorite
+            {t('removeConfirm')}
           </Button>
         </Popup.Content>
       </Popup>

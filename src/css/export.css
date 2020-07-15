@@ -1,6 +1,7 @@
 @import './tachyons.css';
 @import './semantic-ui.css';
 @import './atomic/colors.css';
+@import './atomic/flex.css';
 @import './atomic/cursors.css';
 @import './atomic/position.css';
 @import './elements/page.css';

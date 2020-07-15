@@ -3,10 +3,9 @@ import { pokemonType, favorites } from 'poke-store';
 import { useRecoilValue } from 'recoil';
 import useRouter from '../../hooks/useRouter';
 import EmptyState from '../common/EmptyState';
-import Pokemon from './Pokemon';
+import PokemonListItem from './PokemonListItem';
 import AddFavorite from './AddFavorite';
 import { translate } from 'poke-i18n';
-import './PokemonList.css';
 
 const t = translate(['pokemon']);
 
@@ -23,15 +22,16 @@ const PokemonList = () => {
       </EmptyState>
     );
   }
+
   return (
     <>
       <h3 className="ml3 pt3 ttc">{params.name}</h3>
-      <div className="pokemon-list">
+      <div className="pokemon-list flex flex-wrap">
         {things.map(({ pokemon: { url, name } }) => {
           const id = url.split('/').reverse()[1];
           const isFavorited = favs.some((f) => f.id === id);
           return (
-            <Pokemon
+            <PokemonListItem
               id={id}
               isFavorited={isFavorited}
               key={id}

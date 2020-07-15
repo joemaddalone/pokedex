@@ -12,7 +12,7 @@
     "myFavorites": "My Favourites",
     "add": "Add {{name, capitalize}} to your favourites!",
     "remove": "Are you sure you want to remove {{name, capitalize}} from your favourites?",
-    "removeConfirm": "Remove favourites",
+    "removeConfirm": "Remove favourite",
     "existing": "{{name, capitalize}} is in your favourites!",
     "memo": "Add a memo if you wish"
   },

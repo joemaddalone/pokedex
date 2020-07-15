@@ -1,0 +1,24 @@
+.pokemon-list-item {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  border-radius: 8px;
+  background-color: var(--near-white);
+  border: 1px solid var(--moon-gray);
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 8px var(--moon-gray);
+  }
+
+  & .add-fav {
+    & .add-fav-icon {
+      &:hover {
+        color: var(--gold);
+      }
+      &.active {
+        color: var(--blue) !important;
+      }
+    }
+  }
+}
