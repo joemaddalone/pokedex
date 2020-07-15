@@ -74,7 +74,7 @@ Example:
 }
 ```
 
-### Colors
+### The Rules
 
 CSS is notorius for becoming unwieldly in a project of almost any size.  So we have some rules to help.
 
