@@ -14,7 +14,7 @@ const Favorite = ({ favorite, remove }) => {
         position="left center"
         trigger={
           <Icon
-            className="favorite-remove pointer pa3"
+            className="favorite-remove cur-pointer pa3"
             color="red"
             name="delete"
           />

@@ -8,7 +8,7 @@ const publicPath = '/';
 
 module.exports = () => {
   const port = 9999;
-  return merge(common, {
+  return merge(common(false), {
     devtool: 'inline-source-map',
     mode: 'development',
     output: {
@@ -27,9 +27,9 @@ module.exports = () => {
       port,
     },
     plugins: [
-      new MiniCssExtractPlugin({
-        filename: '[name].css',
-      }),
+      // new MiniCssExtractPlugin({
+      //   filename: '[name].css',
+      // }),
       new webpack.HotModuleReplacementPlugin(),
       new HtmlWebpackPlugin({
         template: './src/index.html',

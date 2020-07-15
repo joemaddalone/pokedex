@@ -17,7 +17,7 @@ const Pokemon = ({ isFavorited, id, name, triggerAdd }) => {
           }
           trigger={
             <Icon
-              className="add-fav-icon pointer"
+              className="add-fav-icon cur-pointer"
               color={isFavorited ? 'blue' : 'black'}
               name="favorite"
               onClick={() => !isFavorited && triggerAdd()}
