@@ -1,11 +1,110 @@
 # Pokedex
 
+## Table of content
+
+- [Installation](#installation)
+- [Component Library](#installation)
+- [Functional CSS Library](#installation)
+- [Writing CSS](#writing-css)
+- [State Management](#state-management)
+- [npm scripts](#pokedex-npm-scripts)
+- [Internationalization (i18n)](#poke-i18n)
+- [Unit testing](#pokedex-unit-testing)
+
+
+## Installation
+
+`npm install`
+
+`npm run start`
+
+Launches the web application in development mode at [http://localhost:9999](http://localhost:9999)
+
+## Component Library
+
+We use [semantic-ui-react](https://react.semantic-ui.com/) as our primary component UI.  Not all components are enabled.  If you need to use a component that is not yet enabled simply uncomment the appropriate line in [src/css/semantic-ui.css](src/css/semantic-ui.css)
+
+## Functional CSS
+
+We use [tachyons](https://tachyons.io/) as helper library to avoid repeated css declarations.
+
+Example:
+
+```css
+.my-flex-div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap
+}
+```
+
+Can be achieved via classes on the element
+
+```html
+<div className="flex flex-wrap items-center justify-center">
+```
+
+Not all of tachyons classes are enabled.  If you need to use a class that is not yet enabled simply uncomment the appropriate line in [src/css/tachyons.css](src/css/tachyons.css)
+
+## Writing CSS
+
+When writing new and component-specific css the css file should be created nexto to the component it is styling.  It should also be named identically. (NavIcon.js + NavIcon.css ).  Class names should always be in kebab-style without capitalization (.nav-icon).
+
+### Using future CSS features
+
+We use [PostCSS](https://postcss.org/) as our css pre-processor (not really a preprocessor, but we can debate this another time).  In conjunction with [postcss-preset-env](https://github.com/csstools/postcss-preset-env) we can use the latest proposals to the CSS spec very similar to how Babel allows us to use the latest proposals to JavaScript.
+
+Example:
+
+```css
+.nav {
+  & .nav-link { /* nav-link is a decendant of .nav.  Note the after the & */
+    color: var(--white);
+
+    &:hover { /* nav-link:hover */
+      background-color: var(--mid-gray);
+      color: var(--white);
+    }
+
+    &.active {/* nav-link.active */
+      background-color: var(--blue);
+    }
+  }
+}
+```
+
+### Colors
+
+CSS is notorius for becoming unwieldly in a project of almost any size.  So we have some rules to help.
+
+**Rule #1:** Never, ever, ever put a hex color value in new css.  Always pick a color from [src/css/atomic/colors.css](src/css/atomic/colors.css).  If the color you need is not there, speak to a designer about adding a new color.
+
+The colors can then be used in your css like so `color: var(--poke-blue)`
+
+**Rule #2:** Use the functional CSS classes we have in place.
+
+Very often you'll find that you need to write absolutely zero CSS in order to land a new component in the project if you utilize the functional CSS classes we've included.
+
+**Rule #3:** Don't fight the browser, you'll lose.
+
+No hacks.  They've likely already been handled in the css libs and utilities we have in place.
+
+## State Management
+
+We use [recoil](https://recoiljs.org/) as our state managment library.
+
+The store can be accessed from within a component like this.
+
+```javascript
+import { favorites, pokemonTypes, useRemoveFavorite } from 'poke-store';
+```
 
 ## Pokedex npm scripts
 
 `npm install`
 
-Will install the upstream dePendencies needed for the web application.
+Will install the upstream dependencies needed for the web application.
 
 `npm run start`
 
@@ -19,6 +118,8 @@ Builds a production version of the webapplication in `/build/`. This directory c
 
 Launches a Webpack Bundle Analyzer of our production build.  This great for figuring out what's making a bundle too large.
 
+<p align="center"><img src="./docs/analyze.png" alt="Size Limit CLI" /></p>
+
 `npm run test`
 
 Will run all unit tests in the application. A string or path may be passed in order to run singe tests or ssets of tests.
@@ -27,13 +128,12 @@ Will run all unit tests in the application. A string or path may be passed in or
 
 Same as `npm run test`, but will also produce a coverage report in the terminal and an interactive report located `coverage/lcov-report/index.html`
 
-<p align="center">
-<p><b>Terminal Report</b></p>
-  <img src="./docs/istanbul.png" alt="Size Limit CLI" width="738">
-  <p><b>Interactive Report</b></p>
-    <img src="./docs/lcov.png" alt="Size Limit CLI" width="738">
-</p>
+#### Terminal Report
+<p align="center"><img src="./docs/istanbul.png" alt="Size Limit CLI" /></p>
 
+#### Interactive Report
+<p align="center"><img src="./docs/lcov.png" alt="Size Limit CLI" /></p>
+    
 `npm run lint`
 
 Runs our eslint process and report it's findings
@@ -48,13 +148,9 @@ Runs our prettier configuration. This happens autoamtically when commiting code.
 
 
 
-## Pokedex i18n (Internationalization)
+## poke-i18n
 
-Libraries:
-
-* [i18next](https://www.i18next.com/)
-* [i18next-browser-languagedetector](https://github.com/i18next/i18next-browser-languageDetector)
-* [i18next-localstorage-cache](https://github.com/i18next/i18next-localStorage-cache)
+We use [i18next](https://www.i18next.com/) for the internationalization (i18n) of our UI.
 
 Plain English strings should be added to ./src/i18n/en.json and organized by feature or section of the application.
 
@@ -70,7 +166,13 @@ When appropriate we can have the strings in this file translated to another lang
 
 `const t = translate(['signin'])`
 
-Our namespace here is 'signin' In the event that the same key exists in more than one namespace the first namespace will be used
+Our namespace here is 'signin'.  This means we are looking for values in en.json nested under the key `signin`.
+
+We can access more than one root key from our locase file.
+
+`const t = translate(['signin', 'common'])`
+
+In the event that the same key exists in more than one namespace the first namespace will be used.  Order of the keys becomes important in this situation.
 
 
 **"t" can then be used in any Javascript file or with React classes or function components.**
@@ -97,17 +199,17 @@ This will run all tests in the application and generate a coverage report in `./
 
 ### Run specific tests with or without coverage report
 
-`yarn test:coverage <pattern>`
+`npm run test:coverage <pattern>`
 
 This will run all tests where the filename matches the pattern and generate a coverage report for those tests.
 
-`yarn test <pattern>`
+`npm run test <pattern>`
 
 This will run all tests where the filename matches the pattern without generating a coverage report for those tests.
 
 ### Set a watch
 
-`yarn test <pattern> --watch`
+`npm run test <pattern> --watch`
 
 This will run all tests where the filename matches the pattern without generating a coverage report for those tests. This will also rerun any time the test(s) are changed.
 
@@ -122,7 +224,7 @@ Example naming:`Application.js` --> `Application.test.js`
 
 ### An example unit test
 
-```
+```javascript
 import React from 'react'; // import as needed if testing a React component
 import renderWith from '../test-util/renderWith'; // This is our abstracted test renderer for React components
 
@@ -148,15 +250,15 @@ describe('<Component />', () => { // Describe the suite of tests about to be run
 })
 ```
 
-### renderWith
+### renderWith utility
 
-### Summary
+#### Summary
 
 *   Wrap a component in a Store Provider, `{ withStore true }`
 *   Wrap a component inthe appropriate react-router Router, `{ withRouter: true }`
 
 
-### Examples:
+#### Examples:
 
 ```javascript
 const { getTestById } = renderWith(<Component />);
@@ -177,7 +279,7 @@ Works identically to react-testing-library's `render`.
 }
 ```
 
-### Notes about usage
+#### Notes about usage
 
 You'll probably never need to:
 
@@ -204,13 +306,13 @@ Use a button instead with a className of `anchor-button`
 
 #### Bad
 
-```
+```html
 <a href="#">linky</a>
 ```
 
 #### Good
 
-```
+```html
 <button type="button" className="anchor-button">linky</button>
 ```
 
@@ -232,13 +334,13 @@ We have three methods for handling this.
 
 #### Bad
 
-```
+```html
 <button onClick={this.clickHandler}>Clicky</button>
 ```
 
 #### Good
 
-```
+```html
 <KeyClick handler={this.clickHandler}>
     <button>Clicky</button>
 </KeyClick>
@@ -250,13 +352,13 @@ If you find you need to add a tabIndex attribute to an item the simplest solutio
 
 #### Bad
 
-```
+```html
 <div tabIndex={0}>stuff</div>
 ```
 
 #### Good
 
-```
+```html
 <div role="button" tabIndex={0}>stuff</div>
 ```
 
