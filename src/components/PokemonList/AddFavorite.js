@@ -29,10 +29,10 @@ const AddFavorite = ({ cancel, pokemon }) => {
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button className="anchor-button" onClick={cancel}>
+        <Button data-testid="cancel-favorite" className="anchor-button" onClick={cancel}>
           {t('cancel')}
         </Button>
-        <Button onClick={onSave} primary>
+        <Button data-testid="save-favorite" onClick={onSave} primary>
           {t('add')}
         </Button>
       </Modal.Actions>

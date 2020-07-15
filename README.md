@@ -25,7 +25,7 @@ Will run all unit tests in the application. A string or path may be passed in or
 
 `npm run test:coverage`
 
-Same as `npm run test`, but will also produce a coverage report located ''
+Same as `npm run test`, but will also produce a coverage report in the terminal and an interactive report located `coverage/lcov-report/index.html`
 
 `npm run lint`
 

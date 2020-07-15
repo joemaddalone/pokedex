@@ -12,7 +12,7 @@ import '../css/export.css';
 
 const App = () => {
   return (
-    <RecoilRoot>
+    <RecoilRoot initializeState={({set}) => {>
       <Router basename="/">
         <Header />
         <main className="app-main">
