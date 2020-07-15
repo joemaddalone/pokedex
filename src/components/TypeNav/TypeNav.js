@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Input } from 'semantic-ui-react';
-import { pokemonTypes } from 'poke-store';
+import { getPokemonTypes } from 'poke-store';
 import { useRecoilValue } from 'recoil';
 import { NavLink } from 'react-router-dom';
 import { translate } from 'poke-i18n';
@@ -9,7 +9,7 @@ import './TypeNav.css';
 const t = translate(['common']);
 
 const TypeNav = () => {
-  const things = useRecoilValue(pokemonTypes);
+  const things = useRecoilValue(getPokemonTypes);
   const [search, setSearch] = useState(null);
 
   const onSearchFilter = (e, data) => setSearch(data.value);

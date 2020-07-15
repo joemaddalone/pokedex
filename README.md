@@ -189,7 +189,7 @@ We use [recoil](https://recoiljs.org/) as our state managment library.
 The store can be accessed from within a component like this.
 
 ```javascript
-import { favorites, pokemonTypes, useRemoveFavorite } from 'poke-store';
+import { favorites, getPokemonTypes, useRemoveFavorite } from 'poke-store';
 ```
 
 ## Pokedex npm scripts

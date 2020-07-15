@@ -1,7 +1,7 @@
 import { selector, selectorFamily } from 'recoil';
 import PokeApi from 'poke-api';
 
-export const pokemonTypes = selector({
+export const getPokemonTypes = selector({
   key: 'pokemonTypes',
   get: async () => {
     const response = await PokeApi.getTypes();
@@ -12,7 +12,7 @@ export const pokemonTypes = selector({
   },
 });
 
-export const pokemonType = selectorFamily({
+export const getPokemonType = selectorFamily({
   key: 'pokemonType',
   get: (name) => async () => {
     try {

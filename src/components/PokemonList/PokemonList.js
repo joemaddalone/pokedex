@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { pokemonType, favorites } from 'poke-store';
+import { getPokemonType, favorites } from 'poke-store';
 import { useRecoilValue } from 'recoil';
 import useRouter from '../../hooks/useRouter';
 import EmptyState from '../common/EmptyState';
@@ -12,7 +12,7 @@ const t = translate(['pokemon']);
 const PokemonList = () => {
   const { params } = useRouter();
   const [adding, setAdding] = useState(null);
-  const things = useRecoilValue(pokemonType(params.name));
+  const things = useRecoilValue(getPokemonType(params.name));
   const favs = useRecoilValue(favorites);
 
   if (!things.length) {
