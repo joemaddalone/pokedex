@@ -1,7 +1,7 @@
 # Pokedex
 
 
-## npm scripts
+## Pokedex npm scripts
 
 `npm install`
 
@@ -48,7 +48,7 @@ Runs our prettier configuration. This happens autoamtically when commiting code.
 
 
 
-## i18n (Internationalization)
+## Pokedex i18n (Internationalization)
 
 Libraries:
 
@@ -152,11 +152,11 @@ describe('<Component />', () => { // Describe the suite of tests about to be run
 
 ### Summary
 
-*   Wrap a component in a Stote Provider, `{ withStore true }`
+*   Wrap a component in a Store Provider, `{ withStore true }`
 *   Wrap a component inthe appropriate react-router Router, `{ withRouter: true }`
 
 
-### renderWith examples:
+### Examples:
 
 ```javascript
 const { getTestById } = renderWith(<Component />);
@@ -189,10 +189,93 @@ Because you can just
 
 ```javascript
 import renderWith from './renderWith';
-const { getByTestId } = renderWith(<AddFavorite {...props} />, {
-  withStore: true,
-});
 ```
+
+# Pokedex a11y (accessibility)
+
+## Some common accessibility issues.
+
+
+
+### jsx-a11y/anchor-is-valid [link to rule](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/anchor-is-valid.md)
+
+This issue presents whenever you use an anchor tag with an href of # or javascript:void(0).
+Use a button instead with a className of `anchor-button`
+
+#### Bad
+
+```
+<a href="#">linky</a>
+```
+
+#### Good
+
+```
+<button type="button" className="anchor-button">linky</button>
+```
+
+
+### jsx-a11y/click-events-have-key-events [link to rule](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/click-events-have-key-events.md)
+
+Visible, non-interactive elements with click handlers must have at least one keyboard listener.  This often comes up whenever you try to add a click event to something that isn't a button or an anchor tag, like a `div` or an `img` tag.
+
+We have three methods for handling this.
+
+1.  Use the `<KeyClick>` component.
+    Wrap your component in the KeyClick HOC and pass your click event in as the `handler` prop.
+
+2.  Use `a11yClickEvent` decorator directly.
+    Decorate your click/key event in @a11yClickEvent.
+    Add onClick and onKeyDown events to your component referencing the same event.
+
+3.  Manually create a key event and a click event
+
+#### Bad
+
+```
+<button onClick={this.clickHandler}>Clicky</button>
+```
+
+#### Good
+
+```
+<KeyClick handler={this.clickHandler}>
+    <button>Clicky</button>
+</KeyClick>
+```
+
+###jsx-a11y/no-noninteractive-tabindex [link to rule](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-noninteractive-tabindex.md)
+
+If you find you need to add a tabIndex attribute to an item the simplest solution is usually to add a role attribute of "button" to the element.
+
+#### Bad
+
+```
+<div tabIndex={0}>stuff</div>
+```
+
+#### Good
+
+```
+<div role="button" tabIndex={0}>stuff</div>
+```
+
+### jsx-a11y/label-has-for [link to rule](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/label-has-for.md)
+
+Ensure that each `<label />` has an `htmlFor` value matching a form element id.
+
+
+### jsx-a11y/mouse-events-have-key-events [link to rule](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/mouse-events-have-key-events.md)
+
+This is much less common in our codebase so far.
+
+*   Copy onMouseEnter/onMouseOver into onFocus.
+*   Copy onMouseOut/onMouseLeave into onBlur.
+
+### jsx-a11y/no-static-element-interactions [link to rule](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-static-element-interactions.md)
+
+This occurs when you have an non-interacvtive element (usually a div) with an onClick attribute and nested components. The click event is expected to bubble up to the non-interactive element. Simply add `role="presentation"` to the non-interactive element.
+
 
 
 

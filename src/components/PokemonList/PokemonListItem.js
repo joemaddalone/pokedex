@@ -25,6 +25,7 @@ const PokemonListItem = ({ isFavorited, id, name, triggerAdd }) => {
       </div>
       <div className="name ttc">{name}</div>
       <img
+        role="presentation"
         alt={name}
         height="100"
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
