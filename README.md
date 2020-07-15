@@ -6,10 +6,12 @@
 - [Component Library](#installation)
 - [Functional CSS Library](#installation)
 - [Writing CSS](#writing-css)
+- [Configuring and Using PokeApi](#configuring-and-using-pokeapi)
 - [State Management](#state-management)
 - [npm scripts](#pokedex-npm-scripts)
 - [Internationalization (i18n)](#poke-i18n)
 - [Unit testing](#pokedex-unit-testing)
+- [Pokedex a11y (Accessibility)](#pokedex-a11y-accessibility)
 
 
 ## Installation
@@ -89,6 +91,96 @@ Very often you'll find that you need to write absolutely zero CSS in order to la
 **Rule #3:** Don't fight the browser, you'll lose.
 
 No hacks.  They've likely already been handled in the css libs and utilities we have in place.
+
+## Configuring and Using PokeApi.
+
+```javascript
+import PokeApi from 'poke-api'
+```
+
+### All endpoints are configured in JSON in endpoints.js
+
+An endpoint loks like this:
+
+```javascript
+{
+	types: {
+		path: '/types',
+		method: ['GET']
+	}
+}
+```
+
+### At this point you can use this endpoint like this:
+
+```javascript
+import PokeApi from "poke-api";
+
+// as a chained promise.
+PokeApi.types.get().then(response => console.log(response));
+
+// or in an async function
+const fetchTypes = async () => {
+  const response = await PokeApi.types.get();
+  console.log(response)
+};
+
+```
+
+### We can make this easier by providing an alias inthe endpoint configuration.
+
+```javascript
+{
+	types: {
+		path: '/types',
+		method: ['GET'],
+		alias: 'Types'
+	}
+}
+
+// PokeApi.types.get() can now be accessed as PokeApi.getTypes()
+```
+
+### To add variables to the api url preface the expected name in the path with a ":".
+
+```javascript
+{
+	type: {
+		path: '/type/:typeid',
+		method: ['GET'],
+		alias: 'Type'
+	}
+}
+```
+
+### We can now pass the `typeid` into our api call.
+
+```
+PokeApi.getType({ typeid: 1})
+```
+
+### To allow querystring params we can add then to the options section of an ednpoint configuration.
+
+```javascript
+{
+	type: {
+		path: '/type/:typeid',
+		method: ['GET'],
+		alias: 'Type'
+		options: {
+			get: {
+				query: ['limit', 'offset']
+			}
+		}
+	}
+}
+```
+
+### We can now pass the path and query parameters into our api call.
+
+```javascript
+PokeApi.getType({ typeid: 1, limit: 10, offset: 15})
+```
 
 ## State Management
 
@@ -346,7 +438,7 @@ We have three methods for handling this.
 </KeyClick>
 ```
 
-###jsx-a11y/no-noninteractive-tabindex [link to rule](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-noninteractive-tabindex.md)
+### jsx-a11y/no-noninteractive-tabindex [link to rule](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-noninteractive-tabindex.md)
 
 If you find you need to add a tabIndex attribute to an item the simplest solution is usually to add a role attribute of "button" to the element.
 
