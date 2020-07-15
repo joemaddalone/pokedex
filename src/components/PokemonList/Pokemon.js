@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Popup } from 'semantic-ui-react';
-import './PokemonList.css';
 import altImage from './Pokemon-Pokeball.png';
+import { translate } from 'poke-i18n';
+import './PokemonList.css';
+const t = translate(['favorite']);
 
 const Pokemon = ({ isFavorited, id, name, triggerAdd }) => {
   return (
@@ -10,11 +12,7 @@ const Pokemon = ({ isFavorited, id, name, triggerAdd }) => {
       <div className="add-fav">
         <Popup
           position="top center"
-          content={
-            isFavorited
-              ? `${name} is in your favourites!`
-              : `Add ${name} to your favourites!`
-          }
+          content={isFavorited ? t('existing', { name }) : t('add', { name })}
           trigger={
             <Icon
               className="add-fav-icon cur-pointer"
@@ -25,7 +23,7 @@ const Pokemon = ({ isFavorited, id, name, triggerAdd }) => {
           }
         />
       </div>
-      <div className="name">{name}</div>
+      <div className="name ttc">{name}</div>
       <img
         alt={name}
         height="100"

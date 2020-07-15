@@ -1,4 +1,4 @@
-const services = {
+const endpoints = {
   types: {
     path: '/type',
     method: ['GET'],
@@ -16,4 +16,4 @@ const services = {
   },
 };
 
-export default services;
+export default endpoints;

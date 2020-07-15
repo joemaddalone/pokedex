@@ -6,9 +6,9 @@ import './Favorite.css';
 const Favorite = ({ favorite, remove }) => {
   return (
     <div className="favorite-item">
-      <h2 className="favorite-name">{favorite.name}</h2>
+      <h2 className="favorite-name ttc">{favorite.name}</h2>
       <p className="favorite-id">#{favorite.id}</p>
-      <p className="favorite-mome">{favorite.memo}</p>
+      <p className="favorite-memo">{favorite.memo}</p>
       <Popup
         hoverable
         position="left center"

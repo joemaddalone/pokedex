@@ -16,6 +16,9 @@
   "author": "Joe Maddalone",
   "license": "ISC",
   "dependencies": {
+    "i18next": "^17.0.4",
+    "i18next-browser-languagedetector": "^3.0.1",
+    "i18next-localstorage-cache": "^1.1.1",
     "path-to-regexp": "^6.1.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

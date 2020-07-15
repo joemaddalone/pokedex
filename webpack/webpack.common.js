@@ -20,7 +20,7 @@ module.exports = (isProduction) => {
         {
           oneOf: [
             {
-			  test: /\.(bmp|gif|jpg|jpeg|png|svg)$/,
+              test: /\.(bmp|gif|jpg|jpeg|png|svg)$/,
               loader: require.resolve('url-loader'),
               options: {
                 limit: 10000,
@@ -71,6 +71,7 @@ module.exports = (isProduction) => {
         'react-dom': '@hot-loader/react-dom',
         'poke-api': path.resolve(__dirname, '../src/api'),
         'poke-store': path.resolve(__dirname, '../src/store'),
+        'poke-i18n': path.resolve(__dirname, '../src/i18n/i18n.js'),
       },
     },
     plugins: [

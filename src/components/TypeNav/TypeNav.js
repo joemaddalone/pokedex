@@ -3,7 +3,10 @@ import { Input } from 'semantic-ui-react';
 import { pokemonTypes } from 'poke-store';
 import { useRecoilValue } from 'recoil';
 import { NavLink } from 'react-router-dom';
+import { translate } from 'poke-i18n';
 import './TypeNav.css';
+
+const t = translate(['common']);
 
 const TypeNav = () => {
   const things = useRecoilValue(pokemonTypes);
@@ -28,7 +31,7 @@ const TypeNav = () => {
         <Input
           icon={inputIcon}
           onChange={onSearchFilter}
-          placeholder="...search"
+          placeholder={t('search')}
           size="small"
           value={search || ''}
         />

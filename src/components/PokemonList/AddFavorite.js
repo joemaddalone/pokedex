@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Modal } from 'semantic-ui-react';
 import { useAddFavorite } from 'poke-store';
+import { translate } from 'poke-i18n';
+
+const t = translate(['favorite', 'common']);
 
 const AddFavorite = ({ cancel, pokemon }) => {
   const [memo, setMemo] = useState(null);
@@ -19,20 +22,18 @@ const AddFavorite = ({ cancel, pokemon }) => {
 
   return (
     <Modal size="tiny" open closeOnEscape={false} closeOnDimmerClick={false}>
-      <Modal.Header>
-        Add <span className="ttc">{pokemon.name}</span> to your favourites
-      </Modal.Header>
+      <Modal.Header>{t('add', pokemon)}</Modal.Header>
       <Modal.Content>
         <Form>
-          <Form.Input onChange={onChangeMemo} label="Add a memo if you wish" />
+          <Form.Input onChange={onChangeMemo} label={t('memo')} />
         </Form>
       </Modal.Content>
       <Modal.Actions>
         <Button className="anchor-button" onClick={cancel}>
-          Cancel
+          {t('cancel')}
         </Button>
         <Button onClick={onSave} primary>
-          Add to favourites
+          {t('add')}
         </Button>
       </Modal.Actions>
     </Modal>

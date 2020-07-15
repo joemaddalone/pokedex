@@ -5,7 +5,10 @@ import useRouter from '../../hooks/useRouter';
 import EmptyState from '../common/EmptyState';
 import Pokemon from './Pokemon';
 import AddFavorite from './AddFavorite';
+import { translate } from 'poke-i18n';
 import './PokemonList.css';
+
+const t = translate(['pokemon']);
 
 const PokemonList = () => {
   const { params } = useRouter();
@@ -16,10 +19,7 @@ const PokemonList = () => {
   if (!things.length) {
     return (
       <EmptyState>
-        <h2>
-          How embarrassing... There appear to be no pokemon with a type of{' '}
-          <span className="ttc">{params.name}.</span>
-        </h2>
+        <h2>{t('noneOfType', { type: params.name })}</h2>
       </EmptyState>
     );
   }
