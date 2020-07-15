@@ -1,0 +1,4 @@
+/** this is a notable omission until tachyons 5 */
+.sticky {
+  position: sticky;
+}

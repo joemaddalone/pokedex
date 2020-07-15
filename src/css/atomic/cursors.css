@@ -1,0 +1,49 @@
+/* General */
+.cur-auto    { cursor: auto }
+.cur-default { cursor: default }
+.cur-none    { cursor: none }
+
+/* Links & Status */
+.cur-context-menu { cursor: context-menu }
+.cur-help         { cursor: help }
+.cur-pointer      { cursor: pointer }
+.cur-progress     { cursor: progress }
+.cur-wait         { cursor: wait }
+
+/* Selection */
+.cur-cell          { cursor: cell }
+.cur-crosshair     { cursor: crosshair }
+.cur-text          { cursor: text }
+.cur-vertical-text { cursor: vertical-text }
+
+/* Drag & Drop */
+.cur-alias       { cursor: alias }
+.cur-copy        { cursor: copy }
+.cur-move        { cursor: move }
+.cur-no-drop     { cursor: no-drop }
+.cur-not-allowed { cursor: not-allowed }
+
+/* Resize & Scrolling */
+.cur-all-scroll  { cursor: all-scroll }
+.cur-col-resize  { cursor: col-resize }
+.cur-row-resize  { cursor: row-resize }
+.cur-e-resize    { cursor: e-resize }
+.cur-n-resize    { cursor: n-resize }
+.cur-ne-resize   { cursor: ne-resize }
+.cur-nw-resize   { cursor: nw-resize }
+.cur-s-resize    { cursor: s-resize }
+.cur-se-resize   { cursor: se-resize }
+.cur-sw-resize   { cursor: sw-resize }
+.cur-w-resize    { cursor: w-resize }
+.cur-ew-resize   { cursor: ew-resize }
+.cur-ns-resize   { cursor: ns-resize }
+.cur-nesw-resize { cursor: nesw-resize }
+.cur-nwse-resize { cursor: nwse-resize }
+
+/* Zoom */
+.cur-zoom-in  { cursor: zoom-in }
+.cur-zoom-out { cursor: zoom-out }
+
+/* Grab */
+.cur-grab     { cursor: grab }
+.cur-grabbing { cursor: grabbing }

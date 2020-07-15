@@ -1,0 +1,20 @@
+.ui.button.anchor-button,
+button.anchor-button {
+  background-color: transparent;
+  color: #1e70bf;
+  outline: none;
+  border: 0;
+  margin: 0em 0.25em 0em 0em;
+  padding: 0.78571429em 1.5em 0.78571429em;
+  font-weight: normal;
+  &:focus {
+    outline: 0 !important;
+    border: 0;
+    box-shadow: none;
+  }
+  &:hover {
+    background-color: transparent !important;
+    color: #1e70bf !important;
+    text-decoration: underline;
+  }
+}
