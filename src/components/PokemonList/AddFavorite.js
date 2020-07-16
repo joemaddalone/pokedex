@@ -34,7 +34,7 @@ const AddFavorite = ({ cancel, pokemon }) => {
         <Modal.Header>{t('add', pokemon)}</Modal.Header>
         <Modal.Content>
           <Form onSubmit={onSave}>
-            <Form.Input autoFocus onChange={onChangeMemo} label={t('memo')} />
+            <Form.Input maxLength={200} autoFocus onChange={onChangeMemo} label={t('memo')} />
           </Form>
         </Modal.Content>
         <Modal.Actions>

@@ -8,42 +8,49 @@ const t = translate(['favorite']);
 
 const Favorite = ({ favorite, remove }) => {
   return (
-    <div className="favorite-item flex justify-between">
-      <div>
-        <p className="fw6 ttc">{favorite.name}</p>
-        <p>#{favorite.id}</p>
-        {favorite.memo && (
-          <Popup
-            basic
-            content={favorite.memo}
-            trigger={
-              <span tabIndex={0} role="button">
-                <Icon name="sticky note"  className="cur-pointer" />
-              </span>
-            }
-          />
-        )}
+    <div className="favorite-item flex justify-between pa2">
+      <div className="flex-column">
+        <div className="flex">
+          <p className="ttc mr2">{favorite.name}</p>
+          {favorite.memo && (
+            <Popup
+              hoverable
+              className="overflow-wrap"
+              basic
+              content={
+                <div
+                  style={{ maxWidth: 250, maxWidth: 200, overflow: 'auto' }}
+                  className="overflow-wrap">
+                  {favorite.memo}
+                </div>
+              }
+              trigger={
+                <span tabIndex={0} role="button">
+                  <Icon color="white" name="attach" className="cur-pointer" />
+                </span>
+              }
+            />
+          )}
+        </div>
+        <div>
+          <p className="f6">#{favorite.id}</p>
+        </div>
       </div>
-      <div>
+      <div className="remover">
         <Popup
           size="tiny"
-          on="click"
           hoverable
           position="left center"
+          content={t('removeConfirm')}
           trigger={
             <Icon
+              onClick={() => remove(favorite)}
               className="favorite-remove cur-pointer"
               color="red"
               name="delete"
             />
-          }>
-          <Popup.Content>
-            <h5>{t('remove', favorite)}</h5>
-            <Button size="tiny" negative onClick={() => remove(favorite)}>
-              {t('removeConfirm')}
-            </Button>
-          </Popup.Content>
-        </Popup>
+          }
+        />
       </div>
     </div>
   );

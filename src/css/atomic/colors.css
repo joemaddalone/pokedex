@@ -72,11 +72,11 @@
   --left-col-items-bg: var(--dark-blue);
 
   --right-col-header-bg: var(--light-purple);
-  --right-col-search-bg: var(--dark-purple);
-  --right-col-items-bg: var(--purple);
+  /* --right-col-search-bg: var(--dark-purple); */
+  --right-col-items-bg: var(--dark-purple);
   
   
-  --center-col-header-bg: #222;
-  --center-col-search-bg: #222;
-  --center-col-items-bg: #222;
+  --center-col-header-bg: var(--near-black);
+  --center-col-search-bg: var(--near-black);
+  --center-col-items-bg: var(--near-black);
 }

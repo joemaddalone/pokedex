@@ -1,6 +1,12 @@
 .favorite-item {
   color: var(--near-white);
-  margin: 10px;
-  /* border: 1px solid var(--moon-gray); */
-  padding: 10px;
+  & .remover {
+    display: none;
+  }
+  &:hover {
+    background-color: var(--navy);
+    & .remover {
+      display: block;
+    }
+  }
 }

@@ -39,7 +39,7 @@
 @import '../../node_modules/tachyons/src/_text-decoration.css';
 @import '../../node_modules/tachyons/src/_text-align.css';
 @import '../../node_modules/tachyons/src/_text-transform.css';
-/* @import '../../node_modules/tachyons/src/_type-scale.css'; */
+@import '../../node_modules/tachyons/src/_type-scale.css';
 /* @import '../../node_modules/tachyons/src/_typography.css'; */
 /* @import '../../node_modules/tachyons/src/_utilities.css'; */
 /* @import '../../node_modules/tachyons/src/_visibility.css'; */
