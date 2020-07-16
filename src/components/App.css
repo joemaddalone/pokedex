@@ -9,6 +9,14 @@ body {
   grid-template-columns: var(--left-grid-col) 1fr var(--right-grid-col);
   height: 50px;
   background-color: var(--near-white);
+  @media (max-width: 950px) {
+    height: 100px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 50px;
+    & .header-grid-3 {
+      display: none;
+    }
+  }
 }
 
 .app-main {
@@ -31,5 +39,20 @@ body {
     overflow: hidden;
     padding-bottom: 15px;
   }
-}
 
+  @media (max-width: 950px) {
+    /* Do amazing responsive things here! */
+    grid-template-rows: 2fr;
+    grid-template-columns: 1fr;
+    & .center-col {
+      grid-column: auto / span 2;
+    }
+    & .right-col {
+      display: none;
+    }
+    & .left-col {
+      order: 2;
+      display: none;
+    }
+  }
+}

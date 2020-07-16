@@ -3,6 +3,7 @@
   height: var(--left-scrollable-height);
   overflow-y: auto;
   overflow-x: hidden;
+  
   & .type-link {
     display: block;
     padding: 8px 10px;

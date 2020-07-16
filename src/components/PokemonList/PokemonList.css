@@ -4,4 +4,8 @@
   height: var(--center-scrollable-height);
   overflow-x: hidden;
   overflow-y: auto;
+
+  @media (max-width: 950px) {
+    height: calc(var(--center-scrollable-height) - 100px);
+  }
 }
