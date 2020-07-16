@@ -1,13 +1,13 @@
 import React from 'react';
-import EmptyState from './common/EmptyState';
 import { translate } from 'poke-i18n';
+import './Home.css';
 
 const t = translate(['home']);
 
 const Home = () => (
-  <EmptyState>
+  <div className="home flex flex-center">
     <h2>{t('welcome')}</h2>
-  </EmptyState>
+  </div>
 );
 
 export default Home;

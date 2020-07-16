@@ -9,5 +9,5 @@ export const favorites = atom({
 
 export const sidebarOpen = atom({
   key: 'sidebarOpen',
-  default: false,
+  default: true,
 });

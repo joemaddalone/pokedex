@@ -26,8 +26,8 @@ const TypeNav = () => {
     : { name: 'search' };
 
   return (
-    <div className="type-nav">
-      <div className="search-types">
+    <>
+      <div className="search-types flex flex-center">
         <Input
           icon={inputIcon}
           onChange={onSearchFilter}
@@ -36,7 +36,8 @@ const TypeNav = () => {
           value={search || ''}
         />
       </div>
-      <div className="left-nav-items">
+
+      <div className="nav-items">
         {items &&
           items.map((item) => (
             <NavLink
@@ -47,7 +48,7 @@ const TypeNav = () => {
             </NavLink>
           ))}
       </div>
-    </div>
+    </>
   );
 };
 

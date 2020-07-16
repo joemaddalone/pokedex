@@ -5,36 +5,31 @@ body {
 }
 
 .app-header {
-  height: 25px;
-  padding: 25px;
+  display: grid;
+  grid-template-columns: var(--left-grid-col) 1fr var(--right-grid-col);
+  height: 50px;
   background-color: var(--near-white);
-  border-bottom: 1px solid var(--moon-gray);
 }
 
 .app-main {
   display: grid;
-  padding-bottom: 25px;
-  height: calc(100vh - 25px);
-  grid-template-columns: 250px 1fr;
-  grid-template-rows: auto 1fr auto;
-  & .items {
-    grid-row: 1 / 4;
-    background-color: var(--near-black);
-    overflow-y: auto;
-    text-align: center;
-    color: var(--near-white);
+  height: 100vh;
+  grid-template-columns: var(--left-grid-col) 1fr var(--right-grid-col);
+  grid-template-rows: auto 1fr;
+  & .left-col {
+    display: grid;
+    grid-template-rows: 65px 1fr;
+    overflow: hidden;
+    background-color: var(--center-col-items-bg);
     padding-bottom: 15px;
-    overflow-y: scroll;
   }
-  & .details {
-    background-color: var(--white);
-    padding: 0 1em;
-    overflow-y: scroll;
+  & .center-col {
+    background-color: var(--center-col-items-bg);
+    overflow: hidden;
+  }
+  & .right-col {
+    overflow: hidden;
+    padding-bottom: 15px;
   }
 }
 
-.header {
-  background-color: var(--white);
-  color: #333;
-  border-bottom: 1px solid var(--near-white);
-}

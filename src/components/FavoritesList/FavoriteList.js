@@ -10,25 +10,24 @@ const FavoriteList = () => {
   const open = useRecoilValue(sidebarOpen);
   const remove = useRemoveFavorite();
 
+  const hasFavs = favs.length;
+
   return (
-    <div
-      className={`favorites-list-container flex flex-column ${
-        open ? 'open' : 'closed'
-      }`}>
-      {!favs.length ? (
-        <EmptyState>
-          <h1>No items</h1>
-        </EmptyState>
+    <div className={`favorites-items ${!hasFavs ? 'flex flex-center' : ''}`}>
+      {!hasFavs ? (
+        <h1>No items</h1>
       ) : (
-        <>
-          <h2 className="tc pt3">My Favourites</h2>
-          {favs.map((f) => (
-            <Favorite remove={remove} key={f.id} favorite={f} />
-          ))}
-        </>
+        favs.map((f) => <Favorite remove={remove} key={f.id} favorite={f} />)
       )}
     </div>
   );
+
+  // <div
+  //   className={`favorites-list-container flex flex-column ${
+  //     open ? 'open' : 'closed'
+  //   }`}>
+
+  // </div>
 };
 
 export default FavoriteList;

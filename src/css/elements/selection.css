@@ -54,7 +54,7 @@ body ::-webkit-scrollbar-thumb:hover {
 }
 
 /* Inverted UI */
-body .ui.inverted::-webkit-scrollbar-track {
+/* body .ui.inverted::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
 }
 body .ui.inverted::-webkit-scrollbar-thumb {
@@ -65,4 +65,4 @@ body .ui.inverted::-webkit-scrollbar-thumb:window-inactive {
 }
 body .ui.inverted::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.35);
-}
+} */

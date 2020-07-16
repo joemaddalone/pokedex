@@ -21,7 +21,7 @@ const AddFavorite = ({ cancel, pokemon }) => {
   const onChangeMemo = (_, data) => setMemo(data.value);
 
   return (
-    <Modal size="tiny" open closeOnEscape={false} closeOnDimmerClick={false}>
+    <Modal size="tiny" open>
       <Modal.Header>{t('add', pokemon)}</Modal.Header>
       <Modal.Content>
         <Form>
@@ -29,7 +29,7 @@ const AddFavorite = ({ cancel, pokemon }) => {
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button data-testid="cancel-favorite" className="anchor-button" onClick={cancel}>
+        <Button data-testid="cancel-favorite" onClick={cancel}>
           {t('cancel')}
         </Button>
         <Button data-testid="save-favorite" onClick={onSave} primary>

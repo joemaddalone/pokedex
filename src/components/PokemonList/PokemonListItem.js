@@ -9,14 +9,20 @@ const t = translate(['favorite']);
 
 const PokemonListItem = ({ isFavorited, id, name, triggerAdd }) => {
   return (
-    <div className="pokemon-list-item flex flex-column flex-center" key={name}>
+    <div
+      className={`pokemon-list-item flex flex-column flex-center ${
+        isFavorited ? 'active' : ''
+      }`}
+      key={name}>
       <div className="add-fav">
         <Popup
           position="top center"
           content={isFavorited ? t('existing', { name }) : t('add', { name })}
           trigger={
             <Icon
-              className={`add-fav-icon cur-pointer ${isFavorited ? 'active' : ''}`}
+              className={`add-fav-icon cur-pointer ${
+                isFavorited ? 'active' : ''
+              }`}
               name="favorite"
               onClick={() => !isFavorited && triggerAdd()}
             />

@@ -18,7 +18,7 @@
 @import '../../node_modules/tachyons/src/_floats.css';
 /* @import '../../node_modules/tachyons/src/_font-family.css'; */
 /* @import '../../node_modules/tachyons/src/_font-style.css'; */
-/* @import '../../node_modules/tachyons/src/_font-weight.css'; */
+@import '../../node_modules/tachyons/src/_font-weight.css';
 /* @import '../../node_modules/tachyons/src/_forms.css'; */
 /* @import '../../node_modules/tachyons/src/_heights.css'; */
 /* @import '../../node_modules/tachyons/src/_letter-spacing.css'; */

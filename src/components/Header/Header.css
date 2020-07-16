@@ -1,0 +1,18 @@
+.header-grid-1 {
+  background-color: var(--left-col-header-bg);
+  border-bottom: 1px solid var(--left-col-header-bg);
+}
+
+.header-grid-2 {
+  color: var(--near-white);
+  background-color: var(--center-col-header-bg);
+  border-bottom: 1px solid var(--gray);
+  &.borderless {
+    border-bottom: 0;
+  }
+}
+
+.header-grid-3 {
+  background-color: var(--right-col-header-bg);
+  border-bottom: 1px solid var(--right-col-header-bg);
+}

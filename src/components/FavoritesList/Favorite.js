@@ -8,27 +8,33 @@ const t = translate(['favorite']);
 
 const Favorite = ({ favorite, remove }) => {
   return (
-    <div className="favorite-item">
-      <h2 className="favorite-name ttc">{favorite.name}</h2>
-      <p className="favorite-id">#{favorite.id}</p>
-      <p className="favorite-memo">{favorite.memo}</p>
-      <Popup
-        hoverable
-        position="left center"
-        trigger={
-          <Icon
-            className="favorite-remove cur-pointer pa3"
-            color="red"
-            name="delete"
-          />
-        }>
-        <Popup.Content>
-          <h5>{t('remove', { favorite })}</h5>
-          <Button size="tiny" negative onClick={() => remove(favorite)}>
-            {t('removeConfirm')}
-          </Button>
-        </Popup.Content>
-      </Popup>
+    <div className="favorite-item flex justify-between">
+      <div>
+        <p className="fw6 ttc">{favorite.name}</p>
+        <p>#{favorite.id}</p>
+        <p>{favorite.memo}</p>
+      </div>
+      <div>
+        <Popup
+          size="tiny"
+          on="click"
+          hoverable
+          position="left center"
+          trigger={
+            <Icon
+              className="favorite-remove cur-pointer"
+              color="red"
+              name="delete"
+            />
+          }>
+          <Popup.Content>
+            <h5>{t('remove', favorite)}</h5>
+            <Button size="tiny" negative onClick={() => remove(favorite)}>
+              {t('removeConfirm')}
+            </Button>
+          </Popup.Content>
+        </Popup>
+      </div>
     </div>
   );
 };

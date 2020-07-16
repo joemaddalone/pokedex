@@ -1,0 +1,7 @@
+.pokemon-list {
+  background-color: var(--center-col-header-bg);
+  color: var(--near-white);
+  height: var(--center-scrollable-height);
+  overflow-x: hidden;
+  overflow-y: auto;
+}

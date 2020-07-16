@@ -4,6 +4,7 @@
 @import './atomic/flex.css';
 @import './atomic/cursors.css';
 @import './atomic/position.css';
+@import './atomic/variables.css';
 @import './elements/page.css';
 @import './elements/selection.css';
 @import './elements/headers.css';

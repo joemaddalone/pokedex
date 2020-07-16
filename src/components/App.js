@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import PokemonList from './PokemonList/PokemonList';
-import Home from './Home';
+import Home from './Home/Home';
 import TypeNav from './TypeNav/TypeNav';
 import Header from './Header/Header';
 import FavoritesList from './FavoritesList/FavoriteList';
@@ -16,22 +16,28 @@ const App = () => {
       <Router basename="/">
         <Header />
         <main className="app-main">
-          <nav className="items">
-            <React.Suspense fallback={<div>Loading...</div>}>
+          <div className="left-col">
+            <React.Suspense fallback={<></>}>
               <TypeNav />
             </React.Suspense>
-          </nav>
-          <div className="details box">
+          </div>
+          <div className="center-col">
             <Switch>
               <React.Suspense
-                fallback={<Loader active>Loading Pokemon...</Loader>}>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/type/:name" component={PokemonList} />
+                fallback={
+                  <Loader active inverted>
+                    Loading Pokemon...
+                  </Loader>
+                }>
+                <Route exact path="/type/:type" component={PokemonList} />
+                <Route component={Home} />
               </React.Suspense>
             </Switch>
           </div>
+          <div className="right-col">
+            <FavoritesList />
+          </div>
         </main>
-        <FavoritesList />
       </Router>
     </RecoilRoot>
   );

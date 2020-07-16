@@ -1,19 +1,6 @@
-.favorites-list-container {
-  background-color: var(--near-white);
-  position: fixed;
-  top: 51px;
-  bottom: 0;
-  width: 400px;
-  z-index: 100;
+.favorites-items {
+  background-color: var(--right-col-items-bg);
+  height: var(--right-scrollable-height);
   overflow-y: auto;
   overflow-x: hidden;
-  transition: all 0.4s ease;
-  box-shadow: 0 18px 16px var(--gray);
-
-  &.open {
-    right: 0;
-  }
-  &.closed {
-    right: -400px;
-  }
 }

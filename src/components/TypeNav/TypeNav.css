@@ -1,4 +1,8 @@
-.type-nav {
+.nav-items {
+  background-color: var(--left-col-items-bg);
+  height: var(--left-scrollable-height);
+  overflow-y: auto;
+  overflow-x: hidden;
   & .type-link {
     display: block;
     padding: 8px 10px;
@@ -6,7 +10,7 @@
     color: var(--white);
 
     &:hover {
-      background-color: var(--mid-gray);
+      background-color: var(--navy);
       color: var(--white);
     }
 
@@ -14,15 +18,8 @@
       background-color: var(--blue);
     }
   }
+}
 
-  & .search-types {
-    position: sticky;
-    top: 0;
-    height: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid var(--dark-gray);
-    background-color: var(--near-black);
-  }
+.search-types {
+  background-color: var(--left-col-search-bg);
 }

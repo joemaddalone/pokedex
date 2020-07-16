@@ -1,0 +1,9 @@
+:root {
+  --right-grid-col: 250px;
+  --left-grid-col: 250px;
+  --panel-header-height: 65px;
+  --app-header-height: 50px;
+  --left-scrollable-height: calc(100vh - 115px);
+  --center-scrollable-height: calc(100vh - 50px);
+  --right-scrollable-height: calc(100vh - 50px);
+}

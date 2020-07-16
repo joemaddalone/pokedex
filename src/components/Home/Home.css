@@ -1,0 +1,5 @@
+.home {
+  color: var(--near-white);
+  height: var(--center-scrollable-height);
+  overflow: hidden;
+}
