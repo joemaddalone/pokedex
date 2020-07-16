@@ -14,7 +14,9 @@ const App = () => {
   return (
     <RecoilRoot>
       <Router basename="/">
-        <Header />
+        <React.Suspense fallback={<></>}>
+          <Header />
+        </React.Suspense>
         <main className="app-main">
           <div className="left-col">
             <React.Suspense fallback={<></>}>

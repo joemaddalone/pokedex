@@ -1,5 +1,6 @@
 import React from 'react';
 import useRouter from '../../hooks/useRouter';
+import HeaderTypeNav from './HeaderTypeNav';
 import { translate } from 'poke-i18n';
 import './Header.css';
 
@@ -18,7 +19,10 @@ const Header = () => {
         className={`header-grid-2 flex flex-center ttc ${
           !type ? 'borderless' : ''
         }`}>
-        {type}
+        <div className="static-header">{type}</div>
+        <div className="nav-header">
+          <HeaderTypeNav currentType={type} />
+        </div>
       </div>
       <div className="header-grid-3 flex flex-center">{t('myFavorites')}</div>
     </header>

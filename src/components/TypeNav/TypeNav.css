@@ -10,7 +10,7 @@
     text-align: left;
     color: var(--white);
 
-    &:hover {
+    &:hover,&:focus {
       background-color: var(--navy);
       color: var(--white);
     }

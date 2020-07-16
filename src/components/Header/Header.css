@@ -16,3 +16,19 @@
   background-color: var(--right-col-header-bg);
   border-bottom: 1px solid var(--right-col-header-bg);
 }
+
+.static-header {
+  display: block;
+}
+.nav-header {
+  display: none;
+}
+
+@media (max-width: 950px) {
+  .static-header {
+    display: none;
+  }
+  .nav-header {
+    display: block;
+  }
+}

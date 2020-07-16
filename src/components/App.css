@@ -4,55 +4,57 @@ body {
   overflow: hidden;
 }
 
-.app-header {
-  display: grid;
-  grid-template-columns: var(--left-grid-col) 1fr var(--right-grid-col);
-  height: 50px;
-  background-color: var(--near-white);
-  @media (max-width: 950px) {
-    height: 100px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 50px 50px;
-    & .header-grid-3 {
-      display: none;
+#root {
+  & .app-header {
+    display: grid;
+    grid-template-columns: var(--left-grid-col) 1fr var(--right-grid-col);
+    height: 50px;
+    background-color: var(--near-white);
+    @media (max-width: 950px) {
+      height: 100px;
+      grid-template-columns: 1fr;
+      grid-template-rows: 50px 50px;
+      & .header-grid-3 {
+        display: none;
+      }
     }
   }
-}
 
-.app-main {
-  display: grid;
-  height: 100vh;
-  grid-template-columns: var(--left-grid-col) 1fr var(--right-grid-col);
-  grid-template-rows: auto 1fr;
-  & .left-col {
+  & .app-main {
     display: grid;
-    grid-template-rows: 65px 1fr;
-    overflow: hidden;
-    background-color: var(--left-col-items-bg);
-    padding-bottom: 15px;
-  }
-  & .center-col {
-    background-color: var(--center-col-items-bg);
-    overflow: hidden;
-  }
-  & .right-col {
-    overflow: hidden;
-    padding-bottom: 15px;
-  }
-
-  @media (max-width: 950px) {
-    /* Do amazing responsive things here! */
-    grid-template-rows: 2fr;
-    grid-template-columns: 1fr;
+    height: 100vh;
+    grid-template-columns: var(--left-grid-col) 1fr var(--right-grid-col);
+    grid-template-rows: auto 1fr;
+    & .left-col {
+      display: grid;
+      grid-template-rows: 65px 1fr;
+      overflow: hidden;
+      background-color: var(--left-col-items-bg);
+      padding-bottom: 15px;
+    }
     & .center-col {
-      grid-column: auto / span 2;
+      background-color: var(--center-col-items-bg);
+      overflow: hidden;
     }
     & .right-col {
-      display: none;
+      overflow: hidden;
+      padding-bottom: 15px;
     }
-    & .left-col {
-      /* order: 2; */
-      display: none;
+
+    @media (max-width: 950px) {
+      /* Do amazing responsive things here! */
+      grid-template-rows: 2fr;
+      grid-template-columns: 1fr;
+      & .center-col {
+        grid-column: auto / span 2;
+      }
+      & .right-col {
+        display: none;
+      }
+      & .left-col {
+        /* order: 2; */
+        display: none;
+      }
     }
   }
 }

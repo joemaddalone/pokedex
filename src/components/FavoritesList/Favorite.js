@@ -1,19 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Popup } from 'semantic-ui-react';
+import KeyClick from '../common/KeyClick';
 import { translate } from 'poke-i18n';
 import './Favorite.css';
 
 const t = translate(['favorite']);
 
 const Favorite = ({ favorite, remove }) => {
+
   return (
-    <div className="favorite-item flex justify-between items-center ph2 pv3">
+    <div
+      className="favorite-item flex justify-between items-center ph2 pv3"
+      tabIndex={0}
+      role="button">
       <div className="flex-column">
         <div className="flex">
           <p className="ttc mr2">{favorite.name}</p>
           {favorite.memo && (
             <Popup
+              on={['hover', 'focus']}
               hoverable
               basic
               className="overflow-wrap"
@@ -26,7 +32,7 @@ const Favorite = ({ favorite, remove }) => {
               }
               trigger={
                 <span tabIndex={0} role="button">
-                  <Icon color="white" name="attach" className="cur-pointer" />
+                  <Icon name="attach" className="cur-pointer" />
                 </span>
               }
             />
@@ -38,16 +44,21 @@ const Favorite = ({ favorite, remove }) => {
       </div>
       <div className="remover">
         <Popup
+          on={['hover', 'focus']}
           basic
           size="tiny"
           content={t('remove')}
           trigger={
-            <Icon
-              onClick={() => remove(favorite)}
-              className="favorite-remove cur-pointer"
-              color="red"
-              name="delete"
-            />
+            <div>
+              <KeyClick handler={() => remove(favorite)}>
+                <span tabIndex={0} role="button">
+                  <Icon
+                    className="favorite-remove cur-pointer"
+                    name="delete"
+                  />
+                </span>
+              </KeyClick>
+            </div>
           }
         />
       </div>

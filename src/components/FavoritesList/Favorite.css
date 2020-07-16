@@ -5,12 +5,13 @@
     border-bottom: 0;
   }
   & .remover {
-    display: none;
+    color: var(--red)  
   }
-  &:hover {
+  & .memo-icon {
+    color: var(--white)  
+  }
+  &:hover,
+  &:focus {
     background-color: var(--navy);
-    & .remover {
-      display: block;
-    }
   }
 }

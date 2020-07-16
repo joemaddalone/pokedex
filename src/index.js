@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import 'poke-i18n';
+import 'poke-i18n'; // initializate i18n
 
 ReactDOM.render(<App />, document.getElementById('root'));
