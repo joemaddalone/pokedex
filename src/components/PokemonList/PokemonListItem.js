@@ -8,21 +8,44 @@ import './PokemonListItem.css';
 
 const t = translate(['favorite']);
 
-const PokemonListItem = ({ isFavorited, id, name, triggerAdd }) => {
+const PokemonListItem = ({ isFavorited, id, name, add, remove }) => {
+  const a11yProps = !isFavorited ? { tabIndex: 0, role: 'button' } : {};
   return (
     <div
       className={`pokemon-list-item flex flex-column flex-center ${
         isFavorited ? 'active' : ''
       }`}
       key={name}>
+      {isFavorited && (
+        <div className="remove-fav">
+          <Popup
+            basic
+            on={['hover', 'focus']}
+            content={'Remove from favoutirerdfsfds?'}
+            trigger={
+              <div>
+                <KeyClick handler={remove}>
+                  <span tabIndex={0} role="button">
+                    <Icon
+                      className="remove-fav-icon cur-pointer"
+                      name="delete"
+                    />
+                  </span>
+                </KeyClick>
+              </div>
+            }
+          />
+        </div>
+      )}
       <div className="add-fav">
         <Popup
-          position="top center"
+          basic
+          on={['hover', 'focus']}
           content={isFavorited ? t('existing', { name }) : t('add', { name })}
           trigger={
             <div>
-              <KeyClick handler={() => !isFavorited && triggerAdd()}>
-                <span tabIndex={0} role="button">
+              <KeyClick handler={() => !isFavorited && add()}>
+                <span {...a11yProps}>
                   <Icon
                     className={`add-fav-icon cur-pointer ${
                       isFavorited ? 'active' : ''
@@ -54,7 +77,8 @@ PokemonListItem.propTypes = {
   isFavorited: PropTypes.bool,
   id: PropTypes.string,
   name: PropTypes.string,
-  triggerAdd: PropTypes.func,
+  add: PropTypes.func,
+  remove: PropTypes.func,
 };
 
 export default PokemonListItem;
