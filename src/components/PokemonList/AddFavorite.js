@@ -13,8 +13,8 @@ const AddFavorite = ({ cancel, pokemon }) => {
   const addFavorite = useAddFavorite();
 
   useEffect(() => {
-    // This solves an a11y issue where the modal immediaely saves.
-    // Complain all you want about setTimeout - this is eactly what every lib calls "defer"
+    // This solves an a11y issue where the modal immediately saves onEnter of the trigger.
+    // Complain all you want about setTimeout - this is exactly what every lib calls "defer"
     setTimeout(() => setOpen(pokemon !== null), 0);
   }, [pokemon]);
 
