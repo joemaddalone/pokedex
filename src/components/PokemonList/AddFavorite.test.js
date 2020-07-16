@@ -11,10 +11,12 @@ describe('<AddFavorite />', () => {
     };
   });
   it('should render without crashing', async () => {
-    const { getByTestId } = renderWith(<AddFavorite {...props} />, {
+    const { getByTestId, wait } = renderWith(<AddFavorite {...props} />, {
       withStore: true,
     });
-    expect(getByTestId('cancel-favorite')).toBeInTheDocument();
-    expect(getByTestId('save-favorite')).toBeInTheDocument();
+    await wait(() => {
+      expect(getByTestId('cancel-favorite')).toBeInTheDocument();
+      expect(getByTestId('save-favorite')).toBeInTheDocument();
+    });
   });
 });
