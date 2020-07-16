@@ -11,11 +11,13 @@ const t = translate(['pokemon']);
 
 const PokemonList = () => {
   const { params } = useRouter();
-  const [adding, setAdding] = useState(null);
+  const [pokemon, setPokemon] = useState(null);
   const items = useRecoilValue(getPokemonType(params.type));
   const open = useRecoilValue(sidebarOpen);
   const favs = useRecoilValue(favorites);
   const hasItems = items?.length;
+
+  const cancel = () => setPokemon(null);
 
   return (
     <div
@@ -34,14 +36,14 @@ const PokemonList = () => {
               isFavorited={isFavorited}
               key={id}
               name={name}
-              triggerAdd={() => setAdding({ id, name })}
+              triggerAdd={() => setPokemon({ id, name })}
             />
           );
         })
       )}
 
-      {adding && (
-        <AddFavorite pokemon={adding} cancel={() => setAdding(null)} />
+      {pokemon && (
+        <AddFavorite pokemon={pokemon} cancel={cancel} />
       )}
     </div>
   );
