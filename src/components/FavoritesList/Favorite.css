@@ -1,5 +1,9 @@
 .favorite-item {
   color: var(--near-white);
+  border-bottom: 1px solid var(--black-20);
+  &:last-child {
+    border-bottom: 0;
+  }
   & .remover {
     display: none;
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Popup, Button } from 'semantic-ui-react';
+import { Icon, Popup } from 'semantic-ui-react';
 import { translate } from 'poke-i18n';
 import './Favorite.css';
 
@@ -8,15 +8,15 @@ const t = translate(['favorite']);
 
 const Favorite = ({ favorite, remove }) => {
   return (
-    <div className="favorite-item flex justify-between pa2">
+    <div className="favorite-item flex justify-between items-center ph2 pv3">
       <div className="flex-column">
         <div className="flex">
           <p className="ttc mr2">{favorite.name}</p>
           {favorite.memo && (
             <Popup
               hoverable
-              className="overflow-wrap"
               basic
+              className="overflow-wrap"
               content={
                 <div
                   style={{ maxWidth: 250, maxWidth: 200, overflow: 'auto' }}
@@ -38,10 +38,9 @@ const Favorite = ({ favorite, remove }) => {
       </div>
       <div className="remover">
         <Popup
+          basic
           size="tiny"
-          hoverable
-          position="left center"
-          content={t('removeConfirm')}
+          content={t('remove')}
           trigger={
             <Icon
               onClick={() => remove(favorite)}

@@ -21,7 +21,7 @@ const PokemonListItem = ({ isFavorited, id, name, add, remove }) => {
           <Popup
             basic
             on={['hover', 'focus']}
-            content={'Remove from favoutirerdfsfds?'}
+            content={t('remove')}
             trigger={
               <div>
                 <KeyClick handler={remove}>
