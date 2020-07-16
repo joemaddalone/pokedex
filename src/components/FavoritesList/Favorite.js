@@ -12,7 +12,17 @@ const Favorite = ({ favorite, remove }) => {
       <div>
         <p className="fw6 ttc">{favorite.name}</p>
         <p>#{favorite.id}</p>
-        <p>{favorite.memo}</p>
+        {favorite.memo && (
+          <Popup
+            basic
+            content={favorite.memo}
+            trigger={
+              <span tabIndex={0} role="button">
+                <Icon name="sticky note"  className="cur-pointer" />
+              </span>
+            }
+          />
+        )}
       </div>
       <div>
         <Popup

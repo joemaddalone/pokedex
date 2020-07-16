@@ -1,5 +1,6 @@
 .favorite-item {
+  color: var(--near-white);
   margin: 10px;
-  border: 1px solid var(--moon-gray);
+  /* border: 1px solid var(--moon-gray); */
   padding: 10px;
 }
