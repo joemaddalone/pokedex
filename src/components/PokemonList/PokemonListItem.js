@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Popup } from 'semantic-ui-react';
 import altImage from './Pokemon-Pokeball.png';
+import KeyClick from '../common/KeyClick';
 import { translate } from 'poke-i18n';
 import './PokemonListItem.css';
 
@@ -19,13 +20,16 @@ const PokemonListItem = ({ isFavorited, id, name, triggerAdd }) => {
           position="top center"
           content={isFavorited ? t('existing', { name }) : t('add', { name })}
           trigger={
-            <Icon
-              className={`add-fav-icon cur-pointer ${
-                isFavorited ? 'active' : ''
-              }`}
-              name="favorite"
-              onClick={() => !isFavorited && triggerAdd()}
-            />
+            <KeyClick handler={() => !isFavorited && triggerAdd()}>
+              <div tabIndex={0} role="button">
+                <Icon
+                  className={`add-fav-icon cur-pointer ${
+                    isFavorited ? 'active' : ''
+                  }`}
+                  name="favorite"
+                />
+              </div>
+            </KeyClick>
           }
         />
       </div>

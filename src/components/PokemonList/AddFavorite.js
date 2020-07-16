@@ -9,7 +9,14 @@ const t = translate(['favorite', 'common']);
 
 const AddFavorite = ({ cancel, pokemon }) => {
   const [memo, setMemo] = useState(null);
+  const [open, setOpen] = useState(false);
   const addFavorite = useAddFavorite();
+
+  useEffect(() => {
+    // This solves an a11y issue where the modal immediaely saves.
+    // Complain all you want about setTimeout - this is eactly what every lib calls "defer"
+    setTimeout(() => setOpen(pokemon !== null), 0);
+  }, [pokemon]);
 
   const onSave = () => {
     addFavorite({
@@ -23,15 +30,11 @@ const AddFavorite = ({ cancel, pokemon }) => {
 
   return (
     <EscapeKey onEscape={cancel}>
-      <Modal size="tiny" open={pokemon !== null}>
+      <Modal size="tiny" open={open}>
         <Modal.Header>{t('add', pokemon)}</Modal.Header>
         <Modal.Content>
           <Form onSubmit={onSave}>
-            <Form.Input
-              autoFocus
-              onChange={onChangeMemo}
-              label={t('memo')}
-            />
+            <Form.Input autoFocus onChange={onChangeMemo} label={t('memo')} />
           </Form>
         </Modal.Content>
         <Modal.Actions>
