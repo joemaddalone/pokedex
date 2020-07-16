@@ -1,13 +1,11 @@
 import React from 'react';
 import Favorite from './Favorite';
 import { useRecoilValue } from 'recoil';
-import { favorites, useRemoveFavorite, sidebarOpen } from 'poke-store';
-import EmptyState from '../common/EmptyState';
+import { favorites, useRemoveFavorite } from 'poke-store';
 import './FavoritesList.css';
 
 const FavoriteList = () => {
   const favs = useRecoilValue(favorites);
-  const open = useRecoilValue(sidebarOpen);
   const remove = useRemoveFavorite();
 
   const hasFavs = favs.length;
@@ -21,13 +19,6 @@ const FavoriteList = () => {
       )}
     </div>
   );
-
-  // <div
-  //   className={`favorites-list-container flex flex-column ${
-  //     open ? 'open' : 'closed'
-  //   }`}>
-
-  // </div>
 };
 
 export default FavoriteList;

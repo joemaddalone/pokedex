@@ -1,7 +1,9 @@
 import React from 'react';
-import FavoriteTrigger from './FavoriteTrigger';
 import useRouter from '../../hooks/useRouter';
+import { translate } from 'poke-i18n';
 import './Header.css';
+
+const t = translate(['favorite']);
 
 const Header = () => {
   const { routeMatch } = useRouter();
@@ -18,10 +20,7 @@ const Header = () => {
         }`}>
         {type}
       </div>
-      <div className="header-grid-3 flex flex-center">
-        My Favourites
-        {/* <FavoriteTrigger /> */}
-      </div>
+      <div className="header-grid-3 flex flex-center">{t('myFavorites')}</div>
     </header>
   );
 };

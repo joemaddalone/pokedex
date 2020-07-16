@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getPokemonType, favorites, sidebarOpen } from 'poke-store';
+import { getPokemonType, favorites } from 'poke-store';
 import { useRecoilValue } from 'recoil';
 import useRouter from '../../hooks/useRouter';
 import PokemonListItem from './PokemonListItem';
@@ -13,7 +13,6 @@ const PokemonList = () => {
   const { params } = useRouter();
   const [pokemon, setPokemon] = useState(null);
   const items = useRecoilValue(getPokemonType(params.type));
-  const open = useRecoilValue(sidebarOpen);
   const favs = useRecoilValue(favorites);
   const hasItems = items?.length;
 
