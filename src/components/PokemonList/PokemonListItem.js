@@ -20,16 +20,18 @@ const PokemonListItem = ({ isFavorited, id, name, triggerAdd }) => {
           position="top center"
           content={isFavorited ? t('existing', { name }) : t('add', { name })}
           trigger={
-            <KeyClick handler={() => !isFavorited && triggerAdd()}>
-              <div tabIndex={0} role="button">
-                <Icon
-                  className={`add-fav-icon cur-pointer ${
-                    isFavorited ? 'active' : ''
-                  }`}
-                  name="favorite"
-                />
-              </div>
-            </KeyClick>
+            <div>
+              <KeyClick handler={() => !isFavorited && triggerAdd()}>
+                <span tabIndex={0} role="button">
+                  <Icon
+                    className={`add-fav-icon cur-pointer ${
+                      isFavorited ? 'active' : ''
+                    }`}
+                    name="favorite"
+                  />
+                </span>
+              </KeyClick>
+            </div>
           }
         />
       </div>
