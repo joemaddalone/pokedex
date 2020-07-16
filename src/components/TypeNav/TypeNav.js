@@ -29,6 +29,7 @@ const TypeNav = () => {
     <>
       <div className="search-types flex flex-center">
         <Input
+          autoFocus
           icon={inputIcon}
           onChange={onSearchFilter}
           placeholder={t('search')}
