@@ -11,6 +11,7 @@
       "version": "detect"
     }
   },
+  "extends": ["plugin:prettier/recommended"],
   "rules": {
     "eol-last": 1,
     "no-unused-vars": 1,
