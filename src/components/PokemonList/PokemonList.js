@@ -24,7 +24,7 @@ const PokemonList = () => {
         !hasItems ? 'flex flex-center' : ''
       }`}>
       {!hasItems ? (
-        <h2>{t('noneOfType', { type: params.type })}</h2>
+        <h2 className="pa2 tc">{t('noneOfType', { type: params.type })}</h2>
       ) : (
         items.map(({ pokemon: { url, name } }) => {
           const id = url.split('/').reverse()[1];

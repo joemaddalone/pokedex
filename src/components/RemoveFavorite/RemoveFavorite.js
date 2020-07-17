@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Popup, Button } from 'semantic-ui-react';
 import { translate } from 'poke-i18n';

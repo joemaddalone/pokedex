@@ -66,13 +66,13 @@
   --washed-yellow: #fffceb;
   --washed-red: #ffdfdf;
 
-  --left-col-header-bg: var(--lightest-blue);
-  --left-col-search-bg: var(--light-blue);
-  --left-col-items-bg: var(--dark-blue);
+  --nav-area-header-bg: var(--lightest-blue);
+  --nav-area-search-bg: var(--light-blue);
+  --nav-area-items-bg: var(--dark-blue);
 
-  --right-col-header-bg: var(--light-purple);
-  --right-col-items-bg: var(--dark-purple);
+  --favorite-area-header-bg: var(--light-purple);
+  --favorite-area-items-bg: var(--dark-purple);
 
-  --center-col-header-bg: var(--near-black);
-  --center-col-items-bg: var(--near-black);
+  --content-area-header-bg: var(--near-black);
+  --content-area-items-bg: var(--near-black);
 }

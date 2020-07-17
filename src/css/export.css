@@ -12,9 +12,10 @@
 @import './elements/text.css';
 @import './elements/links.css';
 @import './components/anchor-button.css';
+@import './components/modalized-content.css';
 
 .no-focus-outline a:focus,
 .no-focus-outline button:focus,
-.no-focus-outline [role=button]:focus {
+.no-focus-outline [role='button']:focus {
   outline: none;
 }

@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  background-color: var(--near-white);
+  background-color: var(--near-black);
   overflow: hidden;
 }
 
@@ -25,18 +25,20 @@ body {
     height: 100vh;
     grid-template-columns: var(--left-grid-col) 1fr var(--right-grid-col);
     grid-template-rows: auto 1fr;
-    & .left-col {
+    transition: all 0.1s ease-in-out;
+    & .nav-area {
       display: grid;
       grid-template-rows: 65px 1fr;
       overflow: hidden;
-      background-color: var(--left-col-items-bg);
+      background-color: var(--nav-area-items-bg);
       padding-bottom: 15px;
     }
-    & .center-col {
-      background-color: var(--center-col-items-bg);
+    & .content-area {
+      background-color: var(--content-area-items-bg);
       overflow: hidden;
     }
-    & .right-col {
+    & .favorite-area {
+      grid-column: 0;
       overflow: hidden;
       padding-bottom: 15px;
     }
@@ -44,15 +46,14 @@ body {
     @media (max-width: 950px) {
       /* Do amazing responsive things here! */
       grid-template-rows: 2fr;
-      grid-template-columns: 1fr;
-      & .center-col {
+      grid-template-columns: 0 1fr 0;
+      & .content-area {
         grid-column: auto / span 2;
       }
-      & .right-col {
+      & .favorite-area {
         display: none;
       }
-      & .left-col {
-        /* order: 2; */
+      & .nav-area {
         display: none;
       }
     }

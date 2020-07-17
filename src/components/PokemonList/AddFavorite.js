@@ -9,7 +9,7 @@ const t = translate(['favorite', 'common']);
 const AddFavorite = ({ close, pokemon }) => {
   const [memo, setMemo] = useState(null);
   const [open, setOpen] = useState(false);
-        const addFavorite = useAddFavorite();
+  const addFavorite = useAddFavorite();
 
   useEffect(() => {
     // This solves an a11y issue where the modal immediately saves onEnter of the trigger.

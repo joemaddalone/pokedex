@@ -4,7 +4,8 @@
     "save": "Save",
     "cancel": "Cancel",
     "yes": "Yes",
-    "no": "No"
+    "no": "No",
+    "types": "Types"
   },
   "home": {
     "welcome": "Yo dawg, select a type."

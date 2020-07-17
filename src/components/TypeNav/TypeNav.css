@@ -1,26 +1,29 @@
-.nav-items {
-  background-color: var(--left-col-items-bg);
-  height: var(--left-scrollable-height);
-  overflow-y: auto;
-  overflow-x: hidden;
-  
-  & .type-link {
-    display: block;
-    padding: 8px 10px;
-    text-align: left;
-    color: var(--white);
+.nav-area {
+  & .nav-items {
+    background-color: var(--nav-area-items-bg);
+    height: var(--left-scrollable-height);
+    overflow-y: auto;
+    overflow-x: hidden;
 
-    &:hover,&:focus {
-      background-color: var(--navy);
+    & .type-link {
+      display: block;
+      padding: 8px 10px;
+      text-align: left;
       color: var(--white);
-    }
 
-    &.active {
-      background-color: var(--blue);
+      &:hover,
+      &:focus {
+        background-color: var(--navy);
+        color: var(--white);
+      }
+
+      &.active {
+        background-color: var(--blue);
+      }
     }
   }
-}
 
-.search-types {
-  background-color: var(--left-col-search-bg);
+  & .search-types {
+    background-color: var(--nav-area-search-bg);
+  }
 }

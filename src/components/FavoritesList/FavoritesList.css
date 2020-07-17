@@ -1,6 +1,8 @@
-.favorites-items {
-  background-color: var(--right-col-items-bg);
-  height: var(--right-scrollable-height);
-  overflow-y: auto;
-  overflow-x: hidden;
+.favorite-area {
+  & .favorites-items {
+    background-color: var(--favorite-area-items-bg);
+    height: var(--right-scrollable-height);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 }

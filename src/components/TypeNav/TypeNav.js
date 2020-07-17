@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { Input } from 'semantic-ui-react';
 import EscapKey from '../common/EscapeKey';
@@ -9,7 +10,7 @@ import './TypeNav.css';
 
 const t = translate(['common']);
 
-const TypeNav = () => {
+const TypeNav = ({ isModal, closeModal }) => {
   const pokemonTypes = useRecoilValue(getPokemonTypes);
   const [search, setSearch] = useState(null);
 
@@ -27,8 +28,11 @@ const TypeNav = () => {
     : { name: 'search' };
 
   return (
-    <>
-      <div className="search-types flex flex-center">
+    <div className="nav-area">
+      <div
+        className={`search-types flex flex-center ${
+          isModal ? 'is-modal pv3' : ''
+        }`}>
         <EscapKey onEscape={clearSearchFilter}>
           <Input
             autoFocus
@@ -41,19 +45,25 @@ const TypeNav = () => {
         </EscapKey>
       </div>
 
-      <div className="nav-items">
+      <div className={`nav-items ${isModal ? '' : 'is-modal'}`}>
         {items &&
           items.map((item) => (
             <NavLink
               className="type-link ttc"
               key={item.name}
+              onClick={() => isModal && closeModal()}
               to={`/type/${item.name}`}>
               {item.name}
             </NavLink>
           ))}
       </div>
-    </>
+    </div>
   );
+};
+
+TypeNav.propTypes = {
+  isModal: PropTypes.bool,
+  closeModal: PropTypes.func,
 };
 
 export default TypeNav;

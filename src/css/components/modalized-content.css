@@ -1,0 +1,8 @@
+.modalized-content {
+  & .close.icon {
+    position: absolute !important;
+    top: -25px !important;
+	left: 8px !important
+
+  }
+}

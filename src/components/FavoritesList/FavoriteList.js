@@ -11,12 +11,14 @@ const FavoriteList = () => {
   const hasFavs = favs.length;
 
   return (
-    <div className={`favorites-items ${!hasFavs ? 'flex flex-center' : ''}`}>
-      {!hasFavs ? (
-        <h1>No items</h1>
-      ) : (
-        favs.map((f) => <Favorite remove={remove} key={f.id} favorite={f} />)
-      )}
+    <div className="favorite-area">
+      <div className={`favorites-items ${!hasFavs ? 'flex flex-center' : ''}`}>
+        {!hasFavs ? (
+          <h1>No items</h1>
+        ) : (
+          favs.map((f) => <Favorite remove={remove} key={f.id} favorite={f} />)
+        )}
+      </div>
     </div>
   );
 };

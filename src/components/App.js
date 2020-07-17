@@ -18,12 +18,10 @@ const App = () => {
           <Header />
         </React.Suspense>
         <main className="app-main">
-          <div className="left-col">
-            <React.Suspense fallback={<></>}>
-              <TypeNav />
-            </React.Suspense>
-          </div>
-          <div className="center-col">
+          <React.Suspense fallback={<div className="nav-area" />}>
+            <TypeNav />
+          </React.Suspense>
+          <div className="content-area">
             <Switch>
               <React.Suspense
                 fallback={
@@ -36,9 +34,7 @@ const App = () => {
               </React.Suspense>
             </Switch>
           </div>
-          <div className="right-col">
-            <FavoritesList />
-          </div>
+          <FavoritesList />
         </main>
       </Router>
     </RecoilRoot>
