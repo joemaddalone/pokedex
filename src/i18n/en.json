@@ -14,7 +14,8 @@
     "removeConfirm": "Are you sure you want to remove {{name, capitalize}} from your favourites?",
     "remove": "Remove favourite",
     "existing": "{{name, capitalize}} is in your favourites!",
-    "memo": "Add a memo if you wish"
+    "memoLabel": "Add a memo if you wish:",
+    "memo": "Memo"
   },
   "pokemon": {
     "noneOfType": "How embarrassing... There appear to be no pokemon with a type of \"{{type, capitalize}}\"."

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getPokemonType, favorites, useRemoveFavorite } from 'poke-store';
+import { getPokemonType, favorites } from 'poke-store';
 import { useRecoilValue } from 'recoil';
 import useRouter from '../../hooks/useRouter';
 import PokemonListItem from './PokemonListItem';
@@ -14,14 +14,13 @@ const PokemonList = () => {
   const [pokemon, setPokemon] = useState(null);
   const items = useRecoilValue(getPokemonType(params.type));
   const favs = useRecoilValue(favorites);
-  const remove = useRemoveFavorite();
   const hasItems = items?.length;
 
   const cancel = () => setPokemon(null);
 
   return (
     <div
-      className={`pokemon-list flex flex-wrap ${
+      className={`pokemon-list flex flex-wrap justify-around ${
         !hasItems ? 'flex flex-center' : ''
       }`}>
       {!hasItems ? (
@@ -32,18 +31,16 @@ const PokemonList = () => {
           const isFavorited = favs.some((f) => f.id === id);
           return (
             <PokemonListItem
-              id={id}
+              pokemon={{id, name}}
               isFavorited={isFavorited}
               key={id}
-              name={name}
-              remove={() => remove({ id })}
               add={() => setPokemon({ id, name })}
             />
           );
         })
       )}
 
-      {pokemon && <AddFavorite pokemon={pokemon} cancel={cancel} />}
+      {pokemon && <AddFavorite pokemon={pokemon} close={cancel} />}
     </div>
   );
 };

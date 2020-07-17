@@ -1,10 +1,8 @@
 .pokemon-list-item {
   position: relative;
-  flex: 1 0 20%;
-  min-width: 150px;
-  height: 200px;
+  width: 250px;
+  height: 250px;
   margin: 10px;
-  border-radius: 8px;
   background-color: var(--near-white);
   border: 1px solid var(--moon-gray);
   color: var(--black);
@@ -21,7 +19,7 @@
   & .add-fav {
     position: absolute;
     top: 5px;
-    left: 4px;
+    right: 4px;
     & .add-fav-icon {
       &:hover {
         color: var(--gold);
@@ -35,12 +33,6 @@
   & .remove-fav {
     position: absolute;
     top: 5px;
-    right: 4px;
-    & .remove-fav-icon {
-      color: var(--light-red);
-      &:hover {
-        color: var(--red);
-      }
-    }
+    left: 4px;
   }
 }

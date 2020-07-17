@@ -1,0 +1,6 @@
+.remove-fav-icon {
+  color: var(--light-red);
+  &:hover {
+    color: var(--red);
+  }
+}

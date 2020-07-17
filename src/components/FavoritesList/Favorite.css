@@ -4,14 +4,16 @@
   &:last-child {
     border-bottom: 0;
   }
-  & .remover {
-    color: var(--red)  
-  }
+  
   & .memo-icon {
-    color: var(--white)  
+    color: var(--white);
   }
   &:hover,
   &:focus {
     background-color: var(--navy);
+  }
+
+  & .memo-text {
+    max-idth: 200 px;
   }
 }

@@ -4,11 +4,14 @@ import PokeApi from 'poke-api';
 export const getPokemonTypes = selector({
   key: 'pokemonTypes',
   get: async () => {
-    const response = await PokeApi.getTypes();
-
-    return response.results.sort((a, b) =>
-      a.name < b.name ? -1 : a.name > b.name ? 1 : 0,
-    );
+    try {
+      const response = await PokeApi.getTypes();
+      return response.results.sort((a, b) =>
+        a.name < b.name ? -1 : a.name > b.name ? 1 : 0,
+      );
+    } catch (err) {
+      return err;
+    }
   },
 });
 

@@ -3,38 +3,24 @@ import PropTypes from 'prop-types';
 import { Icon, Popup } from 'semantic-ui-react';
 import altImage from './Pokemon-Pokeball.png';
 import KeyClick from '../common/KeyClick';
+import RemoveFavorite from '../RemoveFavorite/RemoveFavorite';
 import { translate } from 'poke-i18n';
 import './PokemonListItem.css';
 
 const t = translate(['favorite']);
 
-const PokemonListItem = ({ isFavorited, id, name, add, remove }) => {
+const PokemonListItem = ({ isFavorited, pokemon, add }) => {
   const a11yProps = !isFavorited ? { tabIndex: 0, role: 'button' } : {};
+  const { name, id } = pokemon;
   return (
     <div
       className={`pokemon-list-item flex flex-column flex-center ${
         isFavorited ? 'active' : ''
       }`}
-      key={name}>
+      key={pokemon.name}>
       {isFavorited && (
         <div className="remove-fav">
-          <Popup
-            basic
-            on={['hover', 'focus']}
-            content={t('remove')}
-            trigger={
-              <div>
-                <KeyClick handler={remove}>
-                  <span tabIndex={0} role="button">
-                    <Icon
-                      className="remove-fav-icon cur-pointer"
-                      name="delete"
-                    />
-                  </span>
-                </KeyClick>
-              </div>
-            }
-          />
+          <RemoveFavorite favorite={pokemon} />
         </div>
       )}
       <div className="add-fav">
@@ -75,8 +61,7 @@ const PokemonListItem = ({ isFavorited, id, name, add, remove }) => {
 
 PokemonListItem.propTypes = {
   isFavorited: PropTypes.bool,
-  id: PropTypes.string,
-  name: PropTypes.string,
+  pokemon: PropTypes.object,
   add: PropTypes.func,
   remove: PropTypes.func,
 };
