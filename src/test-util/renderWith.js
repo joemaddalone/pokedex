@@ -3,7 +3,7 @@ import {
   render,
   fireEvent,
   waitForElement,
-  wait,
+  waitFor,
   cleanup,
   getNodeText,
 } from '@testing-library/react';
@@ -75,7 +75,7 @@ export default (component, options = {}, rendererOptions = {}) => {
   return {
     ...r,
     fireEvent,
-    wait,
+    waitFor,
     waitForElement,
     history,
     cleanup,

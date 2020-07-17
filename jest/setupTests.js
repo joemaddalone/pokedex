@@ -12,14 +12,6 @@ const localStorageMock = () => {
 window.localStorage = localStorageMock();
 window.sessionStorage = global.sessionStorage;
 window.scroll = () => {};
-// FIXME Remove when we upgrade to React >= 16.9
-// const originalConsoleError = console.error;
-// console.error = (...args) => {
-//   if (/Warning.*not wrapped in act/.test(args[0])) {
-//     return;
-//   }
-//   originalConsoleError(...args);
-// };
 
 jest.mock('react-dom', () => {
   const original = jest.requireActual('react-dom');
