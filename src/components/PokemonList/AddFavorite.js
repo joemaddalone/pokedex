@@ -13,7 +13,7 @@ const AddFavorite = ({ close, pokemon }) => {
 
   useEffect(() => {
     // This solves an a11y issue where the modal immediately saves onEnter of the trigger.
-    // Poor man's "defer"
+    // Poor man's "defer" to solve event bubbling he didn't have time to resolve..
     setTimeout(() => setOpen(pokemon !== null), 0);
   }, [pokemon]);
 

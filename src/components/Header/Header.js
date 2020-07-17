@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useRouter from '../../hooks/useRouter';
+import { Link } from 'react-router-dom';
 import { translate } from 'poke-i18n';
 import useWindowSize from '../../hooks/useWindowSize';
 import ModalTypeNav from '../TypeNav/ModalTypeNav';
@@ -27,7 +28,9 @@ const Header = () => {
           showHandles ? 'items-center justify-between' : 'flex-center'
         }`}>
         {showHandles && <ModalTypeNav />}
-        <div>Pokedex</div>
+        <div>
+          <Link to="/">Pokedex</Link>
+        </div>
         {showHandles && <ModalFavoriteList />}
       </div>
       <div

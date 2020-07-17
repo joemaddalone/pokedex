@@ -7,7 +7,6 @@ import './FavoritesList.css';
 const FavoriteList = () => {
   const favs = useRecoilValue(favorites);
   const remove = useRemoveFavorite();
-
   const hasFavs = favs.length;
 
   return (
