@@ -307,7 +307,7 @@ generating a coverage report for those tests.
 
 ### Set a watch
 
-`npm run test <pattern> --watch`
+`npm run test <pattern> -- --watch`
 
 This will run all tests where the filename matches the pattern without
 generating a coverage report for those tests. This will also rerun any time the
