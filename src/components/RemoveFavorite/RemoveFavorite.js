@@ -1,28 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Popup } from 'semantic-ui-react';
-import KeyClick from '../common/KeyClick';
+import { Icon, Popup, Button } from 'semantic-ui-react';
 import { translate } from 'poke-i18n';
 import { useRemoveFavorite } from 'poke-store';
 import './RemoveFavorite.css';
 
-const t = translate(['favorite']);
+const t = translate(['favorite', 'common']);
 
 const RemoveFavorite = ({ favorite }) => {
   const remove = useRemoveFavorite();
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <Popup
+      wide
+      open={open}
+      onOpen={handleOpen}
+      onClose={handleClose}
+      hoverable
       basic
-      on={['hover', 'focus']}
-      content={t('remove')}
-      trigger={
+      on={['focus']}
+      content={
         <div>
-          <KeyClick handler={() => remove(favorite)}>
-            <span tabIndex={0} role="button">
-              <Icon className="remove-fav-icon cur-pointer" name="delete" />
-            </span>
-          </KeyClick>
+          <h5>{t('removeConfirm', favorite)}</h5>
+          <div className="flex justify-end">
+            <Button onClick={handleClose}>
+              {t('no')}
+            </Button>
+            <Button negative onClick={() => remove(favorite)}>
+              {t('yes')}
+            </Button>
+          </div>
         </div>
+      }
+      trigger={
+        <span tabIndex={0} role="button">
+          <Icon className="remove-fav-icon cur-pointer" name="delete" />
+        </span>
       }
     />
   );

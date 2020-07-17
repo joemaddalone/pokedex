@@ -2,7 +2,9 @@
   "common": {
     "search": "Search",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "yes": "Yes",
+    "no": "No"
   },
   "home": {
     "welcome": "Yo dawg, select a type."
