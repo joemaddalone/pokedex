@@ -5,12 +5,12 @@ import { translate } from 'poke-i18n';
 
 const t = translate(['favorite']);
 
-const ModalTypeNav = () => {
+const ModalFavoriteList = () => {
   return (
-    <Modalize triggerText={t('favorites')}>
+    <Modalize data-testid="modal-favorite-list" triggerText={t('favorites')}>
       <FavoriteList />
     </Modalize>
   );
 };
 
-export default ModalTypeNav;
+export default ModalFavoriteList;

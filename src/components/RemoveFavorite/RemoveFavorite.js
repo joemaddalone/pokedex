@@ -25,9 +25,7 @@ const RemoveFavorite = ({ favorite }) => {
         <div>
           <h5>{t('removeConfirm', favorite)}</h5>
           <div className="flex justify-end">
-            <Button onClick={handleClose}>
-              {t('no')}
-            </Button>
+            <Button onClick={handleClose}>{t('no')}</Button>
             <Button negative onClick={() => remove(favorite)}>
               {t('yes')}
             </Button>

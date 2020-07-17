@@ -33,7 +33,11 @@ const AddFavorite = ({ close, pokemon }) => {
   const onChangeMemo = (_, data) => setMemo(data.value);
 
   return (
-    <Modal size="tiny" open={open} onClose={handleClose}>
+    <Modal
+      data-testid="add-favorite-modal"
+      size="tiny"
+      open={open}
+      onClose={handleClose}>
       <Modal.Header>{t('add', pokemon)}</Modal.Header>
       <Modal.Content>
         <Form onSubmit={onSave}>

@@ -1,4 +1,7 @@
 .nav-area {
+  & .api-down {
+    color: var(--near-white);
+  }
   & .nav-items {
     background-color: var(--nav-area-items-bg);
     height: var(--left-scrollable-height);

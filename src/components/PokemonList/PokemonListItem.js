@@ -14,6 +14,7 @@ const PokemonListItem = ({ isFavorited, pokemon, add }) => {
   const { name, id } = pokemon;
   return (
     <div
+      data-testid="pokemon-list-item-component"
       className={`pokemon-list-item flex flex-column flex-center ${
         isFavorited ? 'active' : ''
       }`}
@@ -31,7 +32,7 @@ const PokemonListItem = ({ isFavorited, pokemon, add }) => {
           trigger={
             <div>
               <KeyClick handler={() => !isFavorited && add()}>
-                <span {...a11yProps}>
+                <span data-testid="add-favorite-button" {...a11yProps}>
                   <Icon
                     className={`add-fav-icon cur-pointer ${
                       isFavorited ? 'active' : ''

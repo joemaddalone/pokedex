@@ -5,7 +5,8 @@
     "cancel": "Cancel",
     "yes": "Yes",
     "no": "No",
-    "types": "Types"
+    "types": "Types",
+    "apiDown": "Dang... we're pretty sure the api is down."
   },
   "home": {
     "welcome": "Yo dawg, select a type."
@@ -18,7 +19,8 @@
     "remove": "Remove favourite",
     "existing": "{{name, capitalize}} is in your favourites!",
     "memoLabel": "Add a memo if you wish:",
-    "memo": "Memo"
+    "memo": "Memo",
+    "empty": "No items"
   },
   "pokemon": {
     "noneOfType": "How embarrassing... There appear to be no pokemon with a type of \"{{type, capitalize}}\"."

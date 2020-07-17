@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, Button } from 'semantic-ui-react';
 
-const Modalize = ({ children, triggerText }) => {
+const Modalize = ({ children, triggerText, ...rest }) => {
   const [open, setOpen] = useState(false);
   const handleClose = () => setOpen(false);
   const handleOpen = () => setOpen(true);
@@ -20,7 +20,7 @@ const Modalize = ({ children, triggerText }) => {
       basic
       closeIcon
       className="modalized-content"
-      trigger={<Button primary size="tiny" content={triggerText} />}>
+      trigger={<Button {...rest} primary size="tiny" content={triggerText} />}>
       <Modal.Content>{clone}</Modal.Content>
     </Modal>
   );

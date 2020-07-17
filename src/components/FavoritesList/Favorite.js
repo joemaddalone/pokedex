@@ -9,16 +9,22 @@ const t = translate(['favorite']);
 const Favorite = ({ favorite }) => {
   return (
     <div
+      data-testid="favorite-component"
       className="favorite-item flex justify-between items-start ph2 pv3"
       tabIndex={0}
       role="button">
       <div className="flex-column">
-        <p className="ttc mr2 f4">{favorite.name}</p>
+        <p data-testid="favorite-name" className="ttc mr2 f4">
+          {favorite.name}
+        </p>
 
         {favorite.memo && (
           <>
             <small>{t('memo')}</small>
-            <div className="memo-text" className="overflow-wrap">
+            <div
+              data-testid="favorite-memo"
+              className="memo-text"
+              className="overflow-wrap">
               {favorite.memo}
             </div>
           </>

@@ -29,34 +29,42 @@ const TypeNav = ({ isModal, closeModal }) => {
 
   return (
     <div className="nav-area">
-      <div
-        className={`search-types flex flex-center ${
-          isModal ? 'is-modal pv3' : ''
-        }`}>
-        <EscapKey onEscape={clearSearchFilter}>
-          <Input
-            autoFocus
-            icon={inputIcon}
-            onChange={onSearchFilter}
-            placeholder={t('search')}
-            size="small"
-            value={search || ''}
-          />
-        </EscapKey>
-      </div>
+      {!pokemonTypes ? (
+        <blockquote data-testid="api-down" className="api-down tc mt4">
+          {t('apiDown')}
+        </blockquote>
+      ) : (
+        <>
+          <div
+            className={`search-types flex flex-center ${
+              isModal ? 'is-modal pv3' : ''
+            }`}>
+            <EscapKey onEscape={clearSearchFilter}>
+              <Input
+                autoFocus
+                icon={inputIcon}
+                onChange={onSearchFilter}
+                placeholder={t('search')}
+                size="small"
+                value={search || ''}
+              />
+            </EscapKey>
+          </div>
 
-      <div className={`nav-items ${isModal ? '' : 'is-modal'}`}>
-        {items &&
-          items.map((item) => (
-            <NavLink
-              className="type-link ttc"
-              key={item.name}
-              onClick={() => isModal && closeModal()}
-              to={`/type/${item.name}`}>
-              {item.name}
-            </NavLink>
-          ))}
-      </div>
+          <div className={`nav-items ${isModal ? '' : 'is-modal'}`}>
+            {items &&
+              items.map((item) => (
+                <NavLink
+                  className="type-link ttc"
+                  key={item.name}
+                  onClick={() => isModal && closeModal()}
+                  to={`/type/${item.name}`}>
+                  {item.name}
+                </NavLink>
+              ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

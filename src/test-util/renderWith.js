@@ -17,7 +17,7 @@ import { RecoilRoot } from 'recoil';
  * renderWith allows you to:
  *   - Wrap a component in a Provider, options = { withStore: true }
  *   - Wrap a component in a MemoryRouter, options = { withRouter: true }
- *   - Later we'll add the abilit to configure stores here.
+ *   - Configure Store
  *
  * @param {object} - react component to test
  * @param {object} - options to render the component with, ie: withRouter
@@ -25,7 +25,19 @@ import { RecoilRoot } from 'recoil';
  */
 
 export default (component, options = {}, rendererOptions = {}) => {
-  const { withRouter = null, withStore = null } = options;
+  const {
+    withRouter = null,
+    withStore = null,
+    initializeStore = null,
+  } = options;
+
+  const initializeState = initializeStore
+    ? ({ set }) => {
+        Object.keys(initializeStore).forEach((key) => {
+          set({ key }, initializeStore[key]);
+        });
+      }
+    : null;
 
   // Array of wrapper components.
   const wrappers = [];
@@ -37,7 +49,9 @@ export default (component, options = {}, rendererOptions = {}) => {
 
   // Add Store provider wrapper.
   if (withStore) {
-    wrappers.push(React.createElement.bind(null, RecoilRoot));
+    wrappers.push(
+      React.createElement.bind(null, RecoilRoot, { initializeState }),
+    );
   }
 
   let output = null;

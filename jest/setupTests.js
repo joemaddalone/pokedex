@@ -12,7 +12,14 @@ const localStorageMock = () => {
 window.localStorage = localStorageMock();
 window.sessionStorage = global.sessionStorage;
 window.scroll = () => {};
-
+// Ignore the dumb not wrapped in act warning.  React core team working on the issue.
+const originalConsoleError = console.error;
+console.error = (...args) => {
+  if (/Warning.*not wrapped in act/.test(args[0])) {
+    return;
+  }
+  originalConsoleError(...args);
+};
 jest.mock('react-dom', () => {
   const original = jest.requireActual('react-dom');
   return {

@@ -24,14 +24,16 @@ const PokemonList = () => {
         !hasItems ? 'flex flex-center' : ''
       }`}>
       {!hasItems ? (
-        <h2 className="pa2 tc">{t('noneOfType', { type: params.type })}</h2>
+        <h2 data-testid="empty-pokemon-list" className="pa2 tc">
+          {t('noneOfType', { type: params.type })}
+        </h2>
       ) : (
         items.map(({ pokemon: { url, name } }) => {
           const id = url.split('/').reverse()[1];
           const isFavorited = favs.some((f) => f.id === id);
           return (
             <PokemonListItem
-              pokemon={{id, name}}
+              pokemon={{ id, name }}
               isFavorited={isFavorited}
               key={id}
               add={() => setPokemon({ id, name })}

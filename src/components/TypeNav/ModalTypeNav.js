@@ -7,7 +7,7 @@ const t = translate(['common']);
 
 const ModalTypeNav = () => {
   return (
-    <Modalize triggerText={t('types')}>
+    <Modalize data-testid="modal-type-nav" triggerText={t('types')}>
       <TypeNav />
     </Modalize>
   );
