@@ -7,8 +7,11 @@ import Header from './Header/Header';
 import FavoritesList from './FavoritesList/FavoriteList';
 import { RecoilRoot } from 'recoil';
 import { Loader } from 'semantic-ui-react';
+import { translate } from 'poke-i18n';
 import './App.css';
 import '../css/export.css';
+
+const t = translate(['common']);
 
 const App = () => {
   return (
@@ -26,7 +29,7 @@ const App = () => {
               <React.Suspense
                 fallback={
                   <Loader active inverted>
-                    Loading Pokemon...
+                    {t('loading')}
                   </Loader>
                 }>
                 <Route exact path="/type/:type" component={PokemonList} />

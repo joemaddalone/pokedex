@@ -6,6 +6,7 @@
     "yes": "Yes",
     "no": "No",
     "types": "Types",
+    "loading": "Loading...",
     "apiDown": "Dang... we're pretty sure the api is down."
   },
   "home": {
