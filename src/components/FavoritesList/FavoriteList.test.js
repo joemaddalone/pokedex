@@ -16,7 +16,7 @@ describe('<FavoriteList />', () => {
     };
   });
   it('should an empty list', () => {
-    const { getByTestId, waitFor } = renderWith(<FavoriteList />, {
+    const { getByTestId } = renderWith(<FavoriteList />, {
       withStore: true,
     });
     expect(getByTestId('empty-favorites')).toBeInTheDocument();

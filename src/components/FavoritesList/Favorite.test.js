@@ -14,7 +14,7 @@ describe('<Favorite />', () => {
     };
   });
   it('should render without crashing', () => {
-    const { getByTestId, waitFor } = renderWith(<Favorite {...props} />, {
+    const { getByTestId } = renderWith(<Favorite {...props} />, {
       withStore: true,
     });
     expect(getByTestId('favorite-name')).toHaveTextContent(props.favorite.name);

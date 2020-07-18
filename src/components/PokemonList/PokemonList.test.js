@@ -34,10 +34,9 @@ const mockApi = ({ withPokemon = true }) => {
 };
 
 jest.mock('react-router-dom', () => ({
-  useParams: () => ({ sliceName: 'slice_name' }),
+  useParams: () => ({}),
   useHistory: () => ({}),
   useLocation: () => ({}),
-  Link: () => <a />,
 }));
 
 describe('<PokemonList />', () => {
