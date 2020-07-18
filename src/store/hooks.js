@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import { favorites, sidebarOpen } from './atoms';
+import { favorites } from './atoms';
 
 const cloneIndex = (items, id) => ({
   clone: items.map((item) => ({ ...item })),
