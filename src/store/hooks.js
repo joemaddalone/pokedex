@@ -33,10 +33,3 @@ export const useRemoveFavorite = () => {
     cacheFavorites(updatedFavorites);
   };
 };
-
-export const useToggleSidebar = () => {
-  const [state, setState] = useRecoilState(sidebarOpen);
-  return (change = !state) => {
-    setState(change);
-  };
-};
