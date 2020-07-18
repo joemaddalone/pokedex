@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import { favorites, sidebarOpen } from './atoms';
+import { favorites } from './atoms';
 
 const cloneIndex = (items, id) => ({
   clone: items.map((item) => ({ ...item })),
@@ -31,12 +31,5 @@ export const useRemoveFavorite = () => {
     const updatedFavorites = favs.filter((fav) => fav.id !== favorite.id);
     setFavs(updatedFavorites);
     cacheFavorites(updatedFavorites);
-  };
-};
-
-export const useToggleSidebar = () => {
-  const [state, setState] = useRecoilState(sidebarOpen);
-  return (change = !state) => {
-    setState(change);
   };
 };

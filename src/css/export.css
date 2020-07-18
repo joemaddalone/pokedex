@@ -6,6 +6,7 @@
 @import './atomic/position.css';
 @import './atomic/overflow-wrap.css';
 @import './atomic/variables.css';
+@import './elements/no-focus-outline.css';
 @import './elements/page.css';
 @import './elements/selection.css';
 @import './elements/headers.css';
@@ -13,9 +14,3 @@
 @import './elements/links.css';
 @import './components/anchor-button.css';
 @import './components/modalized-content.css';
-
-.no-focus-outline a:focus,
-.no-focus-outline button:focus,
-.no-focus-outline [role='button']:focus {
-  outline: none;
-}
