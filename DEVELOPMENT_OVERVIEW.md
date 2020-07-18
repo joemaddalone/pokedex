@@ -14,25 +14,25 @@ Make a list of all the edge cases I can find because I'll forget about them once
 
 ## Choose the right tools, packages, and libs.  Be prepared to change these choices.
 
-Briely, my choices where:
+Briefly, my choices where:
 
 React + React Router, Recoil, PostCSS, Jest + react-testing-library, Semantic-ui-react, tachyons, i18next.
 
 * React: Familiar to me and battle tested.
 * Recoil: Easy even for those unfamilar with it.
-* PostCSS: Coupled with postcss-en-preset we can use future css now.  Actual css!
-* Jest + rtl: This is the defacto standard right now. however I did write a wrapper around rtl because changing testing libraries sucks.
-* tachyons: Saves me from a ton of cuplicated css.
+* PostCSS: Coupled with postcss-env-preset we can use future css now.  Actual css!
+* Jest + rtl: This is the defacto standard right now. However, I did write a wrapper around rtl because changing testing libraries sucks.
+* tachyons: Saves me from a ton of duplicated css.
 * Semantic-ui-react: Well documented and extensible.
-* i18next: All apps should have i18n.  Here i wronte a quick wrapper around this to make usage much simpler.  I also DID NOT include the related React version of this lib as it clutters the codebase.
+* i18next: All apps should have i18n.  Here i wrote a quick wrapper around this to make usage much simpler.  I also DID NOT include the related React version of this lib as it clutters the codebase.
 
-There are many other libs installed in the application, but they are mostly either hlpers for these primary libs or common to React applications.
+There are many other libs installed in the application, but they are mostly either helpers for these primary libs or common to React applications.
 
 I may hate all of these choices later so I have attempted to simplify and wrap their usage where I can.  I'm not "all-in" on any library ever.
 
 ## Build a first pass with just the overall layout
 
-I built out the basic grid structure of the application.  Call it pages or containers or whatever, this helps in a few ways.  I can see where things should live both visually and in the codebase.  This gives me a look at some responive issues I may want to conder later and also informs the organization of files within the project.
+I built out the basic grid structure of the application.  Call it pages or containers or whatever, this helps in a few ways.  I can see where things should live both visually and in the codebase.  This gives me a look at some responive issues I may want to consider later and also informs the organization of files within the project.
 
 ## Build an api client.
 
@@ -40,7 +40,7 @@ I have no desire to remember complicated endpoints.  So I always do this if ther
 
 ## Structure a state management system that does not require a degree in immutability.
 
-"Fear of touching the architecture" is a huge problem in web development.  I wanted to avoid this by making sure with a few simple rules the state management could be understood and approachable.  You'll see that almost none of the components in this application concenrn themseves with an "is it loading or did it fail?".  As an engineer if I am writing a simple component it is disheartening to find that every small change can potentially break the state in some way that I don't understand and seems unrelated.
+"Fear of touching the architecture" is a huge problem in web development.  I wanted to avoid this by making sure with a few simple rules the state management could be understood and approachable.  You'll see that almost none of the components in this application concern themseves with an "is it loading or did it fail?".  As an engineer if I am writing a simple component it is disheartening to find that every small change can potentially break the state in some way that I don't understand and seems unrelated.
 
 ## Find the common code
 
@@ -64,11 +64,11 @@ I do not have 100% code coverage in this project, but I have created the unit te
 
 ## Documentation
 
-I documented various things all along the way, but now I put together a solid README that will serve as a guide for new contributors.  this will be a living document subject to debate and change.
+I documented various things all along the way, but now I put together a solid README that will serve as a guide for new contributors.  This will be a living document subject to debate and change.
 
 ## Hands off your keyboard!
 
-I've documented a number of bugs and tooling and features I would like to add to the project in the github repository and there will always be more.  There are probably typos and missed items, but that is the nature of development for me, always iterating, always refining, and relying a team dynamic to help find the proper way forward.  Here is what the issues list looks like as of today:
+I've documented a number of bug that need fixing and tooling that needs tweaking and features I would like to add to the project in the github repository and there will always be more.  There are probably typos and missed items, but that is the nature of development for me, always iterating, always refining, and relying a team dynamic to help find the proper way forward.  Here is what the issues list looks like as of today:
 
 ```
 set document.title on each type
