@@ -1,6 +1,6 @@
 const path = require('path');
-const merge = require('webpack-merge');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { merge } = require('webpack-merge');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -14,7 +14,6 @@ module.exports = () => {
       path: path.resolve(__dirname, '../build'),
       pathinfo: false,
       filename: 'js/[name].[contenthash:8].js',
-      futureEmitAssets: true,
       chunkFilename: 'js/[name].[contenthash:8].chunk.js',
       publicPath: '/',
     },
@@ -50,8 +49,6 @@ module.exports = () => {
             },
           },
           parallel: true,
-          cache: true,
-          sourceMap: true,
         }),
       ],
     },

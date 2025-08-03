@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PokemonList from './PokemonList/PokemonList';
 import Home from './Home/Home';
 import TypeNav from './TypeNav/TypeNav';
@@ -25,17 +25,17 @@ const App = () => {
             <TypeNav />
           </React.Suspense>
           <div className="content-area">
-            <Switch>
-              <React.Suspense
-                fallback={
-                  <Loader active inverted>
-                    {t('loading')}
-                  </Loader>
-                }>
-                <Route exact path="/type/:type" component={PokemonList} />
-                <Route component={Home} />
-              </React.Suspense>
-            </Switch>
+            <React.Suspense
+              fallback={
+                <Loader active inverted>
+                  {t('loading')}
+                </Loader>
+              }>
+              <Routes>
+                <Route path="/type/:type" element={<PokemonList />} />
+                <Route path="*" element={<Home />} />
+              </Routes>
+            </React.Suspense>
           </div>
           <FavoritesList />
         </main>

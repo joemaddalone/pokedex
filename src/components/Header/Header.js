@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import useRouter from '../../hooks/useRouter';
-import { Link } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 import { translate } from 'poke-i18n';
 import useWindowSize from '../../hooks/useWindowSize';
 import ModalTypeNav from '../TypeNav/ModalTypeNav';
@@ -11,9 +10,8 @@ const t = translate(['favorite']);
 
 const Header = () => {
   const [showHandles, setShowHandles] = useState(false);
-  const { routeMatch } = useRouter();
   const size = useWindowSize();
-  const match = routeMatch('/type/:type');
+  const match = useMatch('/type/:type');
 
   const type = match?.params?.type;
 

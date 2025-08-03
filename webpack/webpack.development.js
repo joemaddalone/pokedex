@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const common = require('./webpack.common');
 const publicPath = '/';
@@ -16,9 +16,11 @@ module.exports = () => {
       filename: '[name].js',
     },
     devServer: {
-      publicPath,
+      static: {
+        directory: path.join(__dirname, publicPath),
+        publicPath,
+      },
       hot: true,
-      inline: true,
       historyApiFallback: {
         disableDotRule: true,
         index: `${publicPath}index.html`,
@@ -31,7 +33,6 @@ module.exports = () => {
         template: './src/index.html',
         filename: path.resolve(__dirname, `.${publicPath}index.html`),
       }),
-      new webpack.NamedModulesPlugin(),
     ],
   });
 };

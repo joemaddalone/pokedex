@@ -1,16 +1,16 @@
 import {
   useLocation,
-  useHistory,
+  useNavigate,
   useParams,
-  useRouteMatch,
+  useMatch,
 } from 'react-router-dom';
 
 const useRouter = () => {
-  const history = useHistory();
+  const navigate = useNavigate;
   const location = useLocation();
   const params = useParams();
-  const routeMatch = useRouteMatch;
-  return { history, location, params, routeMatch };
+  const routeMatch = useMatch;
+  return { history: { push: navigate }, location, params, routeMatch };
 };
 
 export default useRouter;

@@ -4,7 +4,13 @@
     "es6": true,
     "node": true
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "babelOptions": {
+      "presets": ["@babel/preset-react"]
+    }
+  },
   "settings": {
     "react": {
       "pragma": "React",
@@ -40,7 +46,7 @@
     "react/no-unknown-property": 1,
     "react/no-unused-prop-types": 1,
     "react/prop-types": 2,
-    "react/react-in-jsx-scope": 2,
+    "react/react-in-jsx-scope": 0,
     "react/self-closing-comp": 1,
     "react/jsx-indent-props": 0,
     "quotes": [0, "single"],

@@ -23,8 +23,7 @@ const Favorite = ({ favorite }) => {
             <small>{t('memo')}</small>
             <div
               data-testid="favorite-memo"
-              className="memo-text"
-              className="overflow-wrap">
+              className="memo-text overflow-wrap">
               {favorite.memo}
             </div>
           </>

@@ -53,7 +53,7 @@ const AddFavorite = ({ close, pokemon }) => {
           {t('cancel')}
         </Button>
         <Button data-testid="save-favorite" onClick={onSave} primary>
-          {t('add')}
+          {t('add', pokemon)}
         </Button>
       </Modal.Actions>
     </Modal>

@@ -8,8 +8,7 @@ import {
   getNodeText,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory, createBrowserHistory } from 'history';
+import { MemoryRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
 /**
@@ -44,25 +43,18 @@ export default (component, options = {}, rendererOptions = {}) => {
 
   // Add MemoryRouter wrapper.
   if (withRouter) {
-    wrappers.push(React.createElement.bind(null, Router));
+    wrappers.push(MemoryRouter);
   }
 
   // Add Store provider wrapper.
   if (withStore) {
-    wrappers.push(
-      React.createElement.bind(null, RecoilRoot, { initializeState }),
-    );
+    wrappers.push(RecoilRoot);
   }
 
   let output = null;
 
-  // history for components wrapped in MemoryRouter.
-  const history = withRouter?.route
-    ? createMemoryHistory({ ...withRouter, initialEntries: [withRouter.route] })
-    : createBrowserHistory();
-
   // Props for clone.
-  const cloneProps = withRouter ? { history, ...history } : {};
+  const cloneProps = withRouter ? { initialEntries: [withRouter.route] } : {};
 
   // Cloned component, with cloneProps.
   const clone = React.cloneElement(component, { ...cloneProps });
@@ -74,12 +66,19 @@ export default (component, options = {}, rendererOptions = {}) => {
 
   if (wrappers.length === 1) {
     // One wrapper, either MemoryRouter or Provider.
-    output = wrappers[0](null, clone);
+    const Wrapper = wrappers[0];
+    const wrapperProps = Wrapper === RecoilRoot ? { initializeState } : cloneProps;
+    output = React.createElement(Wrapper, wrapperProps, clone);
   }
 
-  if (!output) {
-    // Two wrappers, both MemoryRouter & Provider. And yes - this is pretty lazy.
-    output = wrappers[0](null, wrappers[1](null, clone));
+  if (wrappers.length === 2) {
+    // Two wrappers, both MemoryRouter and Provider.
+    const [RouterWrapper, StoreWrapper] = wrappers;
+    output = React.createElement(
+      StoreWrapper,
+      { initializeState },
+      React.createElement(RouterWrapper, cloneProps, clone),
+    );
   }
 
   // Execute the renderer.
