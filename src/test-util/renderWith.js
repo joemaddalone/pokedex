@@ -2,14 +2,11 @@ import React from 'react';
 import {
   render,
   fireEvent,
-  waitForElement,
   waitFor,
   cleanup,
-  getNodeText,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Router } from 'react-router-dom';
-import { createMemoryHistory, createBrowserHistory } from 'history';
+import { MemoryRouter } from 'react-router-dom';
 import { RecoilRoot } from 'recoil';
 
 /**
@@ -44,7 +41,7 @@ export default (component, options = {}, rendererOptions = {}) => {
 
   // Add MemoryRouter wrapper.
   if (withRouter) {
-    wrappers.push(React.createElement.bind(null, Router));
+    wrappers.push(React.createElement.bind(null, MemoryRouter));
   }
 
   // Add Store provider wrapper.
@@ -56,13 +53,8 @@ export default (component, options = {}, rendererOptions = {}) => {
 
   let output = null;
 
-  // history for components wrapped in MemoryRouter.
-  const history = withRouter?.route
-    ? createMemoryHistory({ ...withRouter, initialEntries: [withRouter.route] })
-    : createBrowserHistory();
-
   // Props for clone.
-  const cloneProps = withRouter ? { history, ...history } : {};
+  const cloneProps = withRouter ? { initialEntries: [withRouter.route] } : {};
 
   // Cloned component, with cloneProps.
   const clone = React.cloneElement(component, { ...cloneProps });
@@ -74,25 +66,21 @@ export default (component, options = {}, rendererOptions = {}) => {
 
   if (wrappers.length === 1) {
     // One wrapper, either MemoryRouter or Provider.
-    output = wrappers[0](null, clone);
+    const Wrapper = wrappers[0];
+    output = React.createElement(Wrapper, cloneProps, clone);
   }
 
-  if (!output) {
-    // Two wrappers, both MemoryRouter & Provider. And yes - this is pretty lazy.
-    output = wrappers[0](null, wrappers[1](null, clone));
+  if (wrappers.length === 2) {
+    // Two wrappers, both MemoryRouter and Provider.
+    const [RouterWrapper, StoreWrapper] = wrappers;
+    output = React.createElement(
+      StoreWrapper,
+      { initializeState },
+      React.createElement(RouterWrapper, cloneProps, clone),
+    );
   }
 
-  // Execute the renderer.
-  const r = render(output, rendererOptions);
-
-  // react-testing-library renderer destructured.
-  return {
-    ...r,
-    fireEvent,
-    waitFor,
-    waitForElement,
-    history,
-    cleanup,
-    getNodeText,
-  };
+  return render(output, rendererOptions);
 };
+
+export { fireEvent, waitFor, cleanup };

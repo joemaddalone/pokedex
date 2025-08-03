@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+import '@testing-library/jest-dom';
+
 const localStorageMock = () => {
   let store = {};
   return {

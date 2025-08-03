@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const path = require('path');
 const getStyleLoaders = require('./util/getStyleLoaders');
 const appSrc = path.resolve(__dirname, '../src');
@@ -14,25 +15,28 @@ module.exports = (isProduction) => {
         {
           test: /\.js$/,
           include: appSrc,
-          use: ['babel-loader', 'eslint-loader'],
+          use: ['babel-loader'],
         },
 
         {
           oneOf: [
             {
               test: /\.(bmp|gif|jpg|jpeg|png|svg)$/,
-              loader: require.resolve('url-loader'),
-              options: {
-                limit: 10000,
-                name: 'assets/[name].[hash:8].[ext]',
+              type: 'asset',
+              parser: {
+                dataUrlCondition: {
+                  maxSize: 10000,
+                },
+              },
+              generator: {
+                filename: 'assets/[name].[hash:8][ext]',
               },
             },
             {
               test: /\.(eot|ttf|woff|woff2)$/,
-              loader: require.resolve('file-loader'),
-              options: {
-                esModule: false,
-                name: 'assets/[name].[hash:8].[ext]',
+              type: 'asset/resource',
+              generator: {
+                filename: 'assets/[name].[hash:8][ext]',
               },
             },
             {
@@ -47,28 +51,21 @@ module.exports = (isProduction) => {
               sideEffects: true,
             },
             {
-              loader: require.resolve('file-loader'),
+              type: 'asset/resource',
               exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
-              options: {
-                esModule: false,
-                name: 'assets/[name].[hash:8].[ext]',
+              generator: {
+                filename: 'assets/[name].[hash:8][ext]',
               },
             },
             // ** STOP ** Are you adding a new loader?
             // Make sure to add the new loader(s) before the "file" loader.
           ],
         },
-        {
-          parser: {
-            amd: false,
-          },
-        },
       ],
     },
     resolve: {
       extensions: ['.js'],
       alias: {
-        'react-dom': '@hot-loader/react-dom',
         'poke-api': path.resolve(__dirname, '../src/api'),
         'poke-store': path.resolve(__dirname, '../src/store'),
         'poke-i18n': path.resolve(__dirname, '../src/i18n/i18n.js'),
@@ -76,9 +73,12 @@ module.exports = (isProduction) => {
     },
     plugins: [
       new CaseSensitivePathsPlugin(),
-      new webpack.optimize.OccurrenceOrderPlugin(),
-      new webpack.LoaderOptionsPlugin({ options: {} }),
-      new webpack.optimize.ModuleConcatenationPlugin(),
+      new ESLintPlugin({
+        context: appSrc,
+        extensions: ['js', 'jsx'],
+        emitWarning: true,
+        emitError: false,
+      }),
     ],
   };
 };
