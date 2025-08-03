@@ -1,3 +1,6 @@
+> This repository was the deliverable of a take home test I took in 2020.  It landed me the job.  I've made the minimal amount of changes to get it working again in 2025 so that it may help someone else in the future.  My focus, other than meeting the requirements, was to show thoughtful and pragmatic concern for supporting a team through clean code and documentation.
+
+
 # Pokedex
 
 ## Table of content
