@@ -2,8 +2,10 @@ import React from 'react';
 import {
   render,
   fireEvent,
+  waitForElement,
   waitFor,
   cleanup,
+  getNodeText,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
@@ -41,14 +43,12 @@ export default (component, options = {}, rendererOptions = {}) => {
 
   // Add MemoryRouter wrapper.
   if (withRouter) {
-    wrappers.push(React.createElement.bind(null, MemoryRouter));
+    wrappers.push(MemoryRouter);
   }
 
   // Add Store provider wrapper.
   if (withStore) {
-    wrappers.push(
-      React.createElement.bind(null, RecoilRoot, { initializeState }),
-    );
+    wrappers.push(RecoilRoot);
   }
 
   let output = null;
@@ -67,7 +67,8 @@ export default (component, options = {}, rendererOptions = {}) => {
   if (wrappers.length === 1) {
     // One wrapper, either MemoryRouter or Provider.
     const Wrapper = wrappers[0];
-    output = React.createElement(Wrapper, cloneProps, clone);
+    const wrapperProps = Wrapper === RecoilRoot ? { initializeState } : cloneProps;
+    output = React.createElement(Wrapper, wrapperProps, clone);
   }
 
   if (wrappers.length === 2) {
@@ -80,7 +81,17 @@ export default (component, options = {}, rendererOptions = {}) => {
     );
   }
 
-  return render(output, rendererOptions);
-};
+  // Execute the renderer.
+  const r = render(output, rendererOptions);
 
-export { fireEvent, waitFor, cleanup };
+  // react-testing-library renderer destructured.
+  return {
+    ...r,
+    fireEvent,
+    waitFor,
+    waitForElement,
+    history,
+    cleanup,
+    getNodeText,
+  };
+};

@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-const EscapeKey = ({ onEscape, preventEscWhen, children }) => {
+const EscapeKey = ({ onEscape, preventEscWhen = false, children }) => {
   useEffect(() => {
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
@@ -23,8 +23,6 @@ EscapeKey.propTypes = {
   onEscape: PropTypes.func.isRequired,
   preventEscWhen: PropTypes.bool,
 };
-EscapeKey.defaultProps = {
-  preventEscWhen: false,
-};
+
 
 export default EscapeKey;
